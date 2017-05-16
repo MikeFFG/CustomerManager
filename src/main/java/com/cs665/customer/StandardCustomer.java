@@ -4,6 +4,5 @@ package com.cs665.customer;
  * @author michael.burke
  * @since 5/16/17
  */
-public abstract class Customer {
-    private int id;
+public class StandardCustomer extends Customer {
 }

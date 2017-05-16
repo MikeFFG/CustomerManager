@@ -5,5 +5,5 @@ package com.cs665.product;
  * @since 5/16/17
  */
 public abstract class Product {
-
+    private int serialNumber;
 }
