@@ -9,5 +9,6 @@ import com.cs665.utils.DisplayUtil;
 public class Main {
     public static void main(String[] args) {
         DisplayUtil.displayWelcomeMessage();
+
     }
 }

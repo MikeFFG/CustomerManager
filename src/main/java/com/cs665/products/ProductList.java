@@ -1,4 +1,4 @@
-package com.cs665.product;
+package com.cs665.products;
 
 /**
  * @author michael.burke
