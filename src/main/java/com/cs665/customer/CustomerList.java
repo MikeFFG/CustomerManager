@@ -1,5 +1,6 @@
 package com.cs665.customer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,6 +9,10 @@ import java.util.List;
  */
 public class CustomerList {
     private List<Customer> customerList;
+
+    public CustomerList() {
+        customerList = new ArrayList<Customer>();
+    }
 
     public void addCustomer(Customer customer) {
         if (customerAlreadyExists(customer)) {
