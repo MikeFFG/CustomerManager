@@ -1,27 +1,31 @@
 package com.cs665.product;
 
+import com.cs665.utils.MockSerialDB;
+
 /**
  * @author michael.burke
  * @since 5/16/17
  */
 public abstract class Product {
-    private int serialNumber;
-    private double price;
+    protected String serialNumber;
+    protected int priceInCents;
 
-    public int getSerialNumber() {
+    public Product() {};
+
+    public Product(int priceInCents) {
+        serialNumber = MockSerialDB.generateNewProductSerial();
+        this.priceInCents = priceInCents;
+    }
+
+    public String getSerialNumber() {
         return serialNumber;
     }
 
-    public void setSerialNumber(int serialNumber) {
-        this.serialNumber = serialNumber;
+    public int getPriceInCents() {
+        return priceInCents;
     }
 
-    public double getPrice() {
-        return price;
+    public void setPrice(int priceInCents) {
+        this.priceInCents = priceInCents;
     }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
 }

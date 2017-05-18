@@ -9,25 +9,21 @@ import com.cs665.product.ProductList;
  */
 public class Bundle {
     private String bundleName;
-    private double price;
-    private double retailValue;
+    private int priceInCents;
+    private int retailValueInCents;
     private double discountPercentage;
     private ProductList products;
-
-    /* Only one complete constructor for now. Don't see a use case for having a partial
-     * or default constructor at this juncture.
-     */
 
     /**
      * Create new Bundle object
      * @param bundleName - The name of the bundle
-     * @param retailValue - The retail value of the bundle (i.e. the total price of the individual products summed)
+     * @param retailValueInCents - The retail value of the bundle (i.e. the total price of the individual products summed)
      * @param discountPercentage - The percentage of savings for the bundle
      * @param products - The list of products included in the bundle
      */
-    public Bundle(String bundleName, double retailValue, double discountPercentage, ProductList products) {
+    public Bundle(String bundleName, int retailValueInCents, double discountPercentage, ProductList products) {
         this.bundleName = bundleName;
-        this.retailValue = retailValue;
+        this.retailValueInCents = retailValueInCents;
         this.discountPercentage = discountPercentage;
         this.products = products;
         setPrice();
@@ -48,19 +44,19 @@ public class Bundle {
     }
 
     public double getPrice() {
-        return price;
+        return priceInCents;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPrice(int priceInCents) {
+        this.priceInCents = priceInCents;
     }
 
-    public double getRetailValue() {
-        return retailValue;
+    public int getRetailValue() {
+        return retailValueInCents;
     }
 
-    public void setRetailValue(double retailValue) {
-        this.retailValue = retailValue;
+    public void setRetailValue(int retailValueInCents) {
+        this.retailValueInCents = retailValueInCents;
     }
 
     public double getDiscountPercentage() {
@@ -82,6 +78,6 @@ public class Bundle {
     /* Private Utilities */
 
     private void setPrice() {
-        price = retailValue * (1 - discountPercentage);
+        priceInCents = (int) Math.round(retailValueInCents * (1 - discountPercentage));
     }
 }

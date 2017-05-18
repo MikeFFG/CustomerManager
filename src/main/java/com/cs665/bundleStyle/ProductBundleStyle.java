@@ -9,7 +9,7 @@ import com.cs665.productProperties.ProductColor;
  * Created by mburke on 5/16/17.
  */
 public abstract class ProductBundleStyle {
-    protected double retailValue;
+    protected int retailValueInCents;
     protected double discountPercentage;
     protected String name;
     protected ProductList products;
@@ -35,9 +35,15 @@ public abstract class ProductBundleStyle {
         return name;
     }
 
-    public double getRetailValue() {
-        return retailValue;
+    public int getRetailValueInCents() {
+        return retailValueInCents;
     }
+
+//    protected static int calculateBundlePrice() {
+//        int price = 0;
+//        for (Product product : bundle) { price += product.getPriceInCents(); }
+//        return (int) Math.round(price * (1 - bundleDiscount));
+//    }
 
     public abstract Bundle getBundle();
 }
