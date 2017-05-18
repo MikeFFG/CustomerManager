@@ -1,4 +1,4 @@
-package com.cs665.products;
+package com.cs665.productProperties;
 
 /**
  * Created by mburke on 5/16/17.

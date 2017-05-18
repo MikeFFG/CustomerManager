@@ -1,9 +1,9 @@
-package com.cs665.productStyles;
-
-import com.cs665.products.Product;
-import com.cs665.products.ProductColor;
+package com.cs665.bundleStyle;
 
 import java.util.List;
+
+import com.cs665.product.Product;
+import com.cs665.productProperties.ProductColor;
 
 /**
  * Created by mburke on 5/16/17.

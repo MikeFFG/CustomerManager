@@ -1,6 +1,6 @@
-package com.cs665.productStyles;
+package com.cs665.bundleStyle;
 
-import com.cs665.products.Product;
+import com.cs665.product.Product;
 
 import java.util.ArrayList;
 import java.util.List;

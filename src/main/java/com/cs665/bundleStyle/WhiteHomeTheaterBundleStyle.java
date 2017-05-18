@@ -1,9 +1,9 @@
-package com.cs665.productStyles;
+package com.cs665.bundleStyle;
 
-import com.cs665.products.PlayOne;
-import com.cs665.products.Product;
-import com.cs665.products.ProductColor;
-import com.cs665.products.SoundBar;
+import com.cs665.product.SmallSpeaker;
+import com.cs665.product.Product;
+import com.cs665.productProperties.ProductColor;
+import com.cs665.product.SoundBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +17,8 @@ public class WhiteHomeTheaterBundleStyle extends HomeTheaterBundleStyle implemen
     private List<Product> bundle = new ArrayList<Product>();
 
     public WhiteHomeTheaterBundleStyle() {
-        bundle.add(new PlayOne());
-        bundle.add(new PlayOne());
+        bundle.add(new SmallSpeaker());
+        bundle.add(new SmallSpeaker());
         bundle.add(new SoundBar());
     }
 
