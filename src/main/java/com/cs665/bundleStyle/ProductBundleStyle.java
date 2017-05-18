@@ -31,6 +31,8 @@ public abstract class ProductBundleStyle {
         return bundleColor;
     }
 
+    public double getDiscountPercentage() { return discountPercentage; }
+
     public String getName() {
         return name;
     }
@@ -38,12 +40,6 @@ public abstract class ProductBundleStyle {
     public int getRetailValueInCents() {
         return retailValueInCents;
     }
-
-//    protected static int calculateBundlePrice() {
-//        int price = 0;
-//        for (Product product : bundle) { price += product.getPriceInCents(); }
-//        return (int) Math.round(price * (1 - bundleDiscount));
-//    }
 
     public abstract Bundle getBundle();
 }

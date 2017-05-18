@@ -14,26 +14,34 @@ public class Bundle {
     private double discountPercentage;
     private ProductList products;
 
-    /**
-     * Create new Bundle object
-     * @param bundleName - The name of the bundle
-     * @param retailValueInCents - The retail value of the bundle (i.e. the total price of the individual products summed)
-     * @param discountPercentage - The percentage of savings for the bundle
-     * @param products - The list of products included in the bundle
-     */
-    public Bundle(String bundleName, int retailValueInCents, double discountPercentage, ProductList products) {
-        this.bundleName = bundleName;
-        this.retailValueInCents = retailValueInCents;
-        this.discountPercentage = discountPercentage;
-        this.products = products;
-        setPrice();
-    }
+//    /**
+//     * Create new Bundle object
+//     * @param bundleName - The name of the bundle
+//     * @param retailValueInCents - The retail value of the bundle (i.e. the total price of the individual products summed)
+//     * @param discountPercentage - The percentage of savings for the bundle
+//     * @param products - The list of products included in the bundle
+//     */
+//    public Bundle(String bundleName, int retailValueInCents, double discountPercentage, ProductList products) {
+//        this.bundleName = bundleName;
+//        this.retailValueInCents = retailValueInCents;
+//        this.discountPercentage = discountPercentage;
+//        this.products = products;
+//        setPrice();
+//    }
 
     public Bundle(ProductBundleStyle style) {
         this.bundleName = style.getName();
+        this.priceInCents = style.getRetailValueInCents();
+        this.discountPercentage = style.getDiscountPercentage();
+        this.products = style.getProducts();
+        setPrice();
     }
 
-    /* Getters and Setters */
+    /*
+     * Getters and Setters - there are use cases possible where a user
+     * may need to alter parts of the Bundle after creation, for instance to give a
+     * special discount, or a custom bundle, etc. so I've added setters.
+     */
 
     public String getBundleName() {
         return bundleName;
