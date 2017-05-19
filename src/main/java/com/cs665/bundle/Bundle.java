@@ -17,51 +17,24 @@ public abstract class Bundle {
     protected ProductFactory factory;
     protected List<Product> products;
 
-    protected Bundle() {}
-
     public String getBundleName() {
         return bundleName;
-    }
-
-    public void setBundleName(String bundleName) {
-        this.bundleName = bundleName;
     }
 
     public int getPriceInCents() {
         return priceInCents;
     }
 
-    public void setPriceInCents(int priceInCents) {
-        this.priceInCents = priceInCents;
-    }
-
     public int getRetailValueInCents() {
         return retailValueInCents;
-    }
-
-    public void setRetailValueInCents(int retailValueInCents) {
-        this.retailValueInCents = retailValueInCents;
     }
 
     public double getDiscountPercentage() {
         return discountPercentage;
     }
 
-    public void setDiscountPercentage(double discountPercentage) {
-        this.discountPercentage = discountPercentage;
-    }
-
     public List<Product> getProducts() {
         return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
-
-    public String formatCentsToDollars(int value) {
-        NumberFormat formatter = NumberFormat.getCurrencyInstance();
-        return formatter.format(value / 100);
     }
 
     public ProductFactory getFactory() {
@@ -70,6 +43,11 @@ public abstract class Bundle {
 
     public void setFactory(ProductFactory factory) {
         this.factory = factory;
+    }
+
+    public String formatCentsToDollars(int value) {
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        return formatter.format(value / 100);
     }
 
     @Override

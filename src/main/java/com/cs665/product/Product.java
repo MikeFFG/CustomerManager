@@ -20,8 +20,6 @@ public abstract class Product {
         serialNumber = MockSerialDB.generateNewProductSerial();
     }
 
-    public Product() {};
-
     /*
      * Getters and Setters
      * Setter ONLY for priceInCents. Name, SerialNumber, ConnectionType
