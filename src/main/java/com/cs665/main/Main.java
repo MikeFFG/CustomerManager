@@ -1,10 +1,10 @@
 package com.cs665.main;
 
-import java.util.Scanner;
-
 import com.cs665.bundle.Bundle;
 import com.cs665.bundleStyle.ProductBundleStyle;
 import com.cs665.bundleStyle.WhiteHomeTheaterBundleStyle;
+
+import java.util.Scanner;
 
 /**
  * @author michael.burke
@@ -29,16 +29,19 @@ public class Main {
                 bundleStyle = new WhiteHomeTheaterBundleStyle();
                 break;
             case 2:
+                bundleStyle = new WhiteHomeTheaterBundleStyle();
                 break;
             case 3:
+                bundleStyle = new WhiteHomeTheaterBundleStyle();
                 break;
             case 4:
+                bundleStyle = new WhiteHomeTheaterBundleStyle();
                 break;
             default:
                 throw new IllegalArgumentException("Invalid Choice");
         }
 
-        Bundle chosenBundle = new Bundle(bundleStyle);
+        Bundle chosenBundle = bundleStyle.getBundle();
 //        chosenBundle.display();
 
         displayGoodbyeMessage();

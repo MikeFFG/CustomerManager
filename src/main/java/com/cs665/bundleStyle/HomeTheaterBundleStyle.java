@@ -1,20 +1,19 @@
 package com.cs665.bundleStyle;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.cs665.product.Product;
+import com.cs665.bundle.Bundle;
+import com.cs665.product.ProductList;
+import com.cs665.productProperties.ProductColor;
 
 /**
  * Created by mburke on 5/16/17.
  */
 public abstract class HomeTheaterBundleStyle extends ProductBundleStyle {
-    protected static final double bundleDiscount = 0.25;
-    protected List<Product> bundle = new ArrayList<Product>();
+    private static final int retailValueInCents = 7990;
+    private static final double discountPercentage = 0.25;
 
-    public HomeTheaterBundleStyle(Product... products) {
-        super(products);
+    public HomeTheaterBundleStyle(String name, ProductColor bundleColor, ProductList products) {
+        super(retailValueInCents, discountPercentage, name, bundleColor, products);
     }
 
-
+    public abstract Bundle getBundle();
 }

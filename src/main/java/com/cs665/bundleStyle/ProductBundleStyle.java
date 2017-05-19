@@ -1,7 +1,6 @@
 package com.cs665.bundleStyle;
 
 import com.cs665.bundle.Bundle;
-import com.cs665.product.Product;
 import com.cs665.product.ProductList;
 import com.cs665.productProperties.ProductColor;
 
@@ -10,17 +9,20 @@ import com.cs665.productProperties.ProductColor;
  */
 public abstract class ProductBundleStyle {
     protected int retailValueInCents;
+    protected int priceInCents;
     protected double discountPercentage;
     protected String name;
-    protected ProductList products;
     protected ProductColor bundleColor;
+    protected ProductList products;
 
-    public ProductBundleStyle() {}
-
-    public ProductBundleStyle(Product... products) {
-        for (Product product : products) {
-            this.products.add(product);
-        }
+    public ProductBundleStyle(int retailValueInCents, double discountPercentage,
+                              String name, ProductColor bundleColor, ProductList products) {
+        this.retailValueInCents = retailValueInCents;
+        this.discountPercentage = discountPercentage;
+        this.name = name;
+        this.bundleColor = bundleColor;
+        this.products = products;
+        this.priceInCents = calculatePriceInCents();
     }
 
     public ProductList getProducts() {
@@ -41,5 +43,11 @@ public abstract class ProductBundleStyle {
         return retailValueInCents;
     }
 
+    public int getPriceInCents() { return priceInCents; }
+
     public abstract Bundle getBundle();
+
+    private int calculatePriceInCents() {
+        return (int) Math.round(retailValueInCents * (1 - discountPercentage));
+    }
 }
