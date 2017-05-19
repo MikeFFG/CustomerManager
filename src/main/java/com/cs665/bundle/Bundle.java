@@ -1,10 +1,10 @@
 package com.cs665.bundle;
 
-import java.text.NumberFormat;
-import java.util.List;
-
 import com.cs665.product.Product;
 import com.cs665.product.ProductFactory;
+
+import java.text.NumberFormat;
+import java.util.List;
 
 /**
  * Created by mburke on 5/18/17.
@@ -45,9 +45,9 @@ public abstract class Bundle {
         this.factory = factory;
     }
 
-    public String formatCentsToDollars(int value) {
+    public String formatCentsToDollars(int cents) {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
-        return formatter.format(value / 100);
+        return formatter.format(cents / 100.0);
     }
 
     @Override
