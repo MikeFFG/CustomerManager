@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.cs665.bundle.Bundle;
 import com.cs665.bundle.DigitalStreamingBundleFactory;
 import com.cs665.bundle.HomeTheaterBundleFactory;
+import com.cs665.product.BlackProductFactory;
 
 /**
  * @author michael.burke
@@ -23,11 +24,12 @@ public class Main {
 
         int choice = sc.nextInt();
         if (choice == 1) {
-            myBundle = new DigitalStreamingBundleFactory().createBundle();
-        } else if (choice == 2) {
-            myBundle = new HomeTheaterBundleFactory().createBundle();
+            myBundle = new DigitalStreamingBundleFactory().createBundle(new BlackProductFactory());
+        } else {
+            myBundle = new HomeTheaterBundleFactory().createBundle(new BlackProductFactory());
         }
 
+        System.out.println(myBundle);
         displayGoodbyeMessage();
     }
 
