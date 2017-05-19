@@ -1,7 +1,5 @@
 package com.cs665.product;
 
-import com.cs665.productProperties.ProductColor;
-import com.cs665.productProperties.ProductConnectionType;
 import com.cs665.utils.MockSerialDB;
 
 /**
@@ -12,16 +10,14 @@ public abstract class Product {
     protected String name;
     protected String serialNumber;
     protected int priceInCents;
-    protected ProductColor color;
-    protected ProductConnectionType connectionType;
 
-    public Product(String name, int priceInCents, ProductColor color, ProductConnectionType connectionType) {
+    public Product(String name, int priceInCents) {
         this.name = name;
         this.priceInCents = priceInCents;
-        this.color = color;
-        this.connectionType = connectionType;
         serialNumber = MockSerialDB.generateNewProductSerial();
     }
+
+    public Product() {};
 
     /*
      * Getters and Setters
@@ -38,13 +34,5 @@ public abstract class Product {
 
     public void setPriceInCents(int priceInCents) {
         this.priceInCents = priceInCents;
-    }
-
-    public ProductColor getColor() {
-        return color;
-    }
-
-    public ProductConnectionType getConnectionType() {
-        return connectionType;
     }
 }

@@ -3,9 +3,9 @@ package com.cs665.bundle;
 /**
  * Created by mburke on 5/18/17.
  */
-public class DigitalStreamingBundleFactory extends BundleFactory {
+public class DigitalStreamingBundleFactory implements BundleFactory {
     @Override
-    public static Bundle createBundle() {
+    public Bundle createBundle() {
         return new DigitalStreamingBundle();
     }
 }

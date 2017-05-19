@@ -3,9 +3,9 @@ package com.cs665.bundle;
 /**
  * Created by mburke on 5/18/17.
  */
-public class HomeTheaterBundleFactory extends BundleFactory {
+public class HomeTheaterBundleFactory implements BundleFactory {
     @Override
-    public static Bundle createBundle() {
+    public Bundle createBundle() {
         return new HomeTheaterBundle();
     }
 }

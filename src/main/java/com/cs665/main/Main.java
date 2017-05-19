@@ -1,10 +1,10 @@
 package com.cs665.main;
 
+import java.util.Scanner;
+
 import com.cs665.bundle.Bundle;
 import com.cs665.bundle.DigitalStreamingBundleFactory;
 import com.cs665.bundle.HomeTheaterBundleFactory;
-
-import java.util.Scanner;
 
 /**
  * @author michael.burke
@@ -23,9 +23,9 @@ public class Main {
 
         int choice = sc.nextInt();
         if (choice == 1) {
-            myBundle = DigitalStreamingBundleFactory.createBundle();
+            myBundle = new DigitalStreamingBundleFactory().createBundle();
         } else if (choice == 2) {
-            myBundle = HomeTheaterBundleFactory.createBundle();
+            myBundle = new HomeTheaterBundleFactory().createBundle();
         }
 
         displayGoodbyeMessage();
