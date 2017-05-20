@@ -16,3 +16,7 @@ Alternatively, I have uploaded a jar file to the root folder of the repository w
 To run this:
 
 ``java -jar CustomerManager-1.0-SNAPSHOT.jar``
+
+Tests can be run with:
+
+``mvn test``
