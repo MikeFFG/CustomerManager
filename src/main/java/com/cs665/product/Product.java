@@ -1,7 +1,7 @@
 package com.cs665.product;
 
 import com.cs665.productProperties.ProductColor;
-import com.cs665.utils.MockSerialDB;
+import com.cs665.utils.MockIDGenerator;
 
 /**
  * @author michael.burke
@@ -17,7 +17,7 @@ public abstract class Product {
         this.name = name;
         this.priceInCents = priceInCents;
         this.color = color;
-        serialNumber = MockSerialDB.generateNewProductSerial();
+        serialNumber = MockIDGenerator.generateNewProductSerial();
     }
 
     /*

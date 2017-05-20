@@ -1,18 +1,18 @@
 package com.cs665.utils;
 
-import java.util.HashSet;
-
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Assert;
 
-import static com.cs665.utils.MockSerialDB.*;
+import java.util.HashSet;
+
+import static com.cs665.utils.MockIDGenerator.*;
 
 /**
  * @author michael.burke
  * @since 5/18/17
  */
-public class MockSerialDBTest {
+public class MockIDGeneratorTest {
     @Before
     public void setup() {
         customerIDs = new HashSet<String>();
