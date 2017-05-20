@@ -23,7 +23,7 @@ public abstract class Product {
     /*
      * Getters and Setters
      * Setter ONLY for priceInCents. Name, SerialNumber, ConnectionType
-     * and Color are sent at manufacture time and can't be changed
+     * and Color are set at manufacture time and can't be changed
      */
     public String getName() {
         return name;

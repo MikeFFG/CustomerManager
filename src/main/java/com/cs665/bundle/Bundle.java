@@ -41,10 +41,17 @@ public abstract class Bundle {
         return factory;
     }
 
+    /* Only one Setter. Bundles should be immutable except for Color */
     public void setFactory(ProductFactory factory) {
         this.factory = factory;
     }
 
+    /**
+     * Due to issues with floating point numbers, we are storing cents as ints.
+     * Need to convert to dollars for display purposes
+     * @param cents - value of cents to convert
+     * @return - String formatted in dollars
+     */
     public String formatCentsToDollars(int cents) {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         return formatter.format(cents / 100.0);
@@ -64,10 +71,18 @@ public abstract class Bundle {
         return builder.toString();
     }
 
+    /**
+     * Uses the total MSRP value of the bundle times the discountPercentage to get the actual price of the bundle
+     * @return - actual price of the bundle
+     */
     protected int calculatePriceInCents() {
         return (int) Math.round(retailValueInCents * (1 - discountPercentage));
     }
 
+    /**
+     * Calculates the total "MSRP" of the bundle, by adding each product's price.
+     * @return - the value of the bundle
+     */
     protected int calculateRetailValueInCents() {
         int total = 0;
         for (Product product : products) {
@@ -76,6 +91,11 @@ public abstract class Bundle {
         return total;
     }
 
+    /**
+     * Abstract method that creates the bundle. Each subclass should be aware of what
+     * products are included in that particular bundle and will override this.
+     * @return a List of products for the bundle
+     */
     protected abstract List<Product> createProductsList();
 
 }
