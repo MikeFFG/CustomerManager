@@ -4,7 +4,7 @@ Project for CS665
 
 To build/run:
 
-Ensure Maven is install locally (or use IDE with Maven integration):
+Ensure Maven is installed locally (or use IDE with Maven integration):
 http://maven.apache.org/install.html
 
 Then:
