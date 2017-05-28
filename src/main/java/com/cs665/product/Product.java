@@ -41,6 +41,10 @@ public abstract class Product {
         this.priceInCents = priceInCents;
     }
 
+    public String getSerialNumber() {
+        return serialNumber;
+    }
+
     @Override
     public String toString() {
         return "\n" + name + " - " + color + " - " + "SN: " + serialNumber;

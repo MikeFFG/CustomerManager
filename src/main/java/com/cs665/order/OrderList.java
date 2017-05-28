@@ -1,5 +1,6 @@
 package com.cs665.order;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,8 +9,6 @@ import java.util.List;
  */
 public class OrderList {
     private List<Order> orderList;
-
-    /* Constructors */
 
     public OrderList() {
         orderList = new ArrayList<>();
@@ -36,35 +35,101 @@ public class OrderList {
         orderList.add(order);
     }
 
-    public MyIterator<Order> createIterator() {
-        return new OrderListIterator(this);
+    /* Iterators */
+
+    public OrderListIterator createIteratorDefault() {
+        return new OrderListIteratorDefault(this);
     }
 
-    private class OrderListIterator  implements MyIterator<Order> {
-        private OrderList orderList;
-        private int index;
+    public OrderListIterator createIteratorByDate() {
+        return new OrderListIteratorByDate(this);
+    }
 
-        public OrderListIterator(OrderList list) {
+    public OrderListIterator createIteratorByPrice() {
+        return new OrderListIteratorByPrice(this);
+    }
+
+    /* Iterator nested classes
+     * Copying Orders to a new list to preserve original list order.
+     * NOT deep copying Orders.
+     * Currently, sorting algorithms are pretty inefficient.
+     * TODO: Sort more efficiently.
+     */
+
+    protected class OrderListIteratorDefault extends OrderListIterator {
+        public OrderListIteratorDefault(OrderList list) {
             orderList = list;
             index = 0;
         }
+    }
 
-        public void setToFirst() {
+    protected class OrderListIteratorByDate extends OrderListIterator {
+        public OrderListIteratorByDate(OrderList list) {
+            orderList = createListByDate(list);
             index = 0;
         }
 
-        public void increment() {
-            index++;
+        private OrderList createListByDate(OrderList list) {
+            List<Order> newList = new ArrayList<>();    // New List so we don't shift items in the old list
+            List<Order> oldList = list.orderList;
+
+            // Loop through original list
+            for (int i = 0; i < oldList.size(); i++) {
+                // If it's the first item, just add to the new list
+                if (i == 0) {
+                    newList.add(oldList.get(i));
+                } else {
+                    LocalDateTime current = oldList.get(i).getOrderTime();
+                    int currentSize = newList.size();
+                    int indexToAdd = currentSize;
+
+                    // Loop through the new list
+                    for (int j = 0; j < currentSize; j++) {
+                        // Compare dates
+                        if (newList.get(j).getOrderTime().isAfter(current)) {
+                            indexToAdd = j;
+                            break;
+                        }
+                    }
+                    newList.add(indexToAdd, oldList.get(i));
+                }
+            }
+            return new OrderList(newList);
+        }
+    }
+
+    protected class OrderListIteratorByPrice extends OrderListIterator {
+        public OrderListIteratorByPrice(OrderList list) {
+            orderList = createListByDate(list);
+            index = 0;
         }
 
-        public boolean isDone() {
-            return index >= orderList.size();
-        }
+        private OrderList createListByDate(OrderList list) {
+            List<Order> newList = new ArrayList<>();    // New List so we don't shift items in the old list
+            List<Order> oldList = list.orderList;
 
-        public Order getCurrentItem() {
-            Order order = orderList.get(index);
-            increment();
-            return order;
+            // Loop through original list
+            for (int i = 0; i < oldList.size(); i++) {
+                // If it's the first item, just add to the new list
+                if (i == 0) {
+                    newList.add(oldList.get(i));
+                } else {
+                    int currentPrice = oldList.get(i).getTotalPriceInCents();
+                    int currentSize = newList.size();
+                    int indexToAdd = currentSize;
+
+                    // Loop through the new list
+                    for (int j = 0; j < currentSize; j++) {
+                        // Compare price
+                        if (newList.get(j).getTotalPriceInCents() > currentPrice) {
+                            indexToAdd = j;
+                            break;
+                        }
+                    }
+                    newList.add(indexToAdd, oldList.get(i));
+                }
+            }
+            return new OrderList(newList);
         }
     }
 }

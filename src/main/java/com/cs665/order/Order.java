@@ -36,6 +36,10 @@ public abstract class Order {
         calculatePriceInCents();
     }
 
+    public int getTotalPriceInCents() {
+        return totalPriceInCents;
+    }
+
     public void addItem(Product product) {
         items.add(product);
         calculatePriceInCents();
