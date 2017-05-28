@@ -1,7 +1,5 @@
 package com.cs665.order;
 
-import com.cs665.product.Product;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +9,7 @@ import java.util.List;
  */
 public abstract class Order {
     LocalDateTime orderTime;
-    List<Product> items;
+    List<OrderComponent> items;
     int totalPriceInCents;
 
     public Order () {
@@ -27,11 +25,11 @@ public abstract class Order {
         this.orderTime = orderTime;
     }
 
-    public List<Product> getItems() {
+    public List<OrderComponent> getItems() {
         return items;
     }
 
-    public void setItems(List<Product> items) {
+    public void setItems(List<OrderComponent> items) {
         this.items = items;
         calculatePriceInCents();
     }
@@ -40,14 +38,14 @@ public abstract class Order {
         return totalPriceInCents;
     }
 
-    public void addItem(Product product) {
-        items.add(product);
+    public void addItem(OrderComponent item) {
+        items.add(item);
         calculatePriceInCents();
     }
 
     private void calculatePriceInCents() {
         int totalPriceInCents = 0;
-        for (Product item : items) {
+        for (OrderComponent item : items) {
             totalPriceInCents += item.getPriceInCents();
         }
         this.totalPriceInCents = totalPriceInCents;

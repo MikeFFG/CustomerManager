@@ -1,5 +1,6 @@
 package com.cs665.product;
 
+import com.cs665.order.OrderComponent;
 import com.cs665.productProperties.ProductColor;
 import com.cs665.utils.MockIDGenerator;
 
@@ -7,7 +8,7 @@ import com.cs665.utils.MockIDGenerator;
  * @author michael.burke
  * @since 5/16/17
  */
-public abstract class Product {
+public abstract class Product implements OrderComponent {
     protected String name;
     protected String serialNumber;
     protected int priceInCents;

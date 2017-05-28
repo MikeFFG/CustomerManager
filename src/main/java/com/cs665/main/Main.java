@@ -1,5 +1,6 @@
 package com.cs665.main;
 
+import com.cs665.bundle.Bundle;
 import com.cs665.bundle.BundleFactory;
 import com.cs665.bundle.DigitalStreamingBundleFactory;
 import com.cs665.bundle.HomeTheaterBundleFactory;
@@ -20,18 +21,18 @@ public class Main {
 
     public static void main(String[] args) {
 
-//        Bundle bundle;
-//        BundleFactory bundleFactory;
-//        ProductFactory productFactory;
-//
-//        displayWelcomeMessage();
-//
-//        bundleFactory = getUserBundleChoice();
-//        productFactory = getUserColorChoice();
-//        bundle = bundleFactory.createBundle(productFactory);
-//
-//        System.out.println("You chose: \n" + bundle);
-//        displayGoodbyeMessage();
+        Bundle bundle;
+        BundleFactory bundleFactory;
+        ProductFactory productFactory;
+
+        displayWelcomeMessage();
+
+        bundleFactory = getUserBundleChoice();
+        productFactory = getUserColorChoice();
+        bundle = bundleFactory.createBundle(productFactory);
+
+        System.out.println("You chose: \n" + bundle);
+        displayGoodbyeMessage();
     }
 
     private static void displayWelcomeMessage() {

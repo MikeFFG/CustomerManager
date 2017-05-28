@@ -1,5 +1,6 @@
 package com.cs665.bundle;
 
+import com.cs665.order.OrderComponent;
 import com.cs665.product.Product;
 import com.cs665.product.ProductFactory;
 
@@ -9,7 +10,7 @@ import java.util.List;
 /**
  * Created by mburke on 5/18/17.
  */
-public abstract class Bundle {
+public abstract class Bundle implements OrderComponent {
     protected String bundleName;
     protected int priceInCents;
     protected int retailValueInCents;
