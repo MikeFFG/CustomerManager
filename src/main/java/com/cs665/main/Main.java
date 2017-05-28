@@ -1,16 +1,17 @@
 package com.cs665.main;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
-import com.cs665.bundle.Bundle;
 import com.cs665.bundle.BundleFactory;
 import com.cs665.bundle.DigitalStreamingBundleFactory;
 import com.cs665.bundle.HomeTheaterBundleFactory;
-import com.cs665.product.BlackProductFactory;
-import com.cs665.product.OakProductFactory;
-import com.cs665.product.ProductFactory;
-import com.cs665.product.WhiteProductFactory;
+import com.cs665.order.MyIterator;
+import com.cs665.order.Order;
+import com.cs665.order.OrderList;
+import com.cs665.order.StandardOrder;
+import com.cs665.product.*;
+import com.cs665.productProperties.ProductColor;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 /**
  * @author michael.burke
@@ -20,18 +21,42 @@ public class Main {
     private static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Bundle bundle;
-        BundleFactory bundleFactory;
-        ProductFactory productFactory;
+        OrderList newOrderList = new OrderList();
 
-        displayWelcomeMessage();
+        Order order1 = new StandardOrder();
+        order1.addItem(new LargeSpeaker(ProductColor.BLACK));
+        newOrderList.add(order1);
 
-        bundleFactory = getUserBundleChoice();
-        productFactory = getUserColorChoice();
-        bundle = bundleFactory.createBundle(productFactory);
+        Order order2 = new StandardOrder();
+        order2.addItem(new LargeSpeaker(ProductColor.OAK));
+        newOrderList.add(order2);
 
-        System.out.println("You chose: \n" + bundle);
-        displayGoodbyeMessage();
+        Order order3 = new StandardOrder();
+        order3.addItem(new LargeSpeaker(ProductColor.WHITE));
+        newOrderList.add(order3);
+
+        Order order4 = new StandardOrder();
+        order4.addItem(new SmallSpeaker(ProductColor.BLACK));
+        newOrderList.add(order4);
+
+        MyIterator<Order> iter = newOrderList.createIterator();
+        while(!iter.isDone()) {
+            System.out.println(iter.getCurrentItem().getItems());
+        }
+
+
+//        Bundle bundle;
+//        BundleFactory bundleFactory;
+//        ProductFactory productFactory;
+//
+//        displayWelcomeMessage();
+//
+//        bundleFactory = getUserBundleChoice();
+//        productFactory = getUserColorChoice();
+//        bundle = bundleFactory.createBundle(productFactory);
+//
+//        System.out.println("You chose: \n" + bundle);
+//        displayGoodbyeMessage();
     }
 
     private static void displayWelcomeMessage() {
