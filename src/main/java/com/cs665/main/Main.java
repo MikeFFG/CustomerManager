@@ -78,25 +78,26 @@ public class Main {
         System.out.println("------------------------------------------------");
         System.out.println("Here is a list of your orders in default order:");
         OrderListIterator defaultIterator = orderList.createIteratorDefault();
-        System.out.println("------");
+        System.out.println();
         while (!defaultIterator.isDone()) {
             Order order = defaultIterator.getCurrentItem();
-            System.out.print(order.getItems() + "- ");
-            System.out.println("Total for order = " + formatCentsToDollars(order.getTotalPriceInCents()));
+            System.out.print(order.getItems());
             System.out.println("------");
+            System.out.println("Total for order = " + formatCentsToDollars(order.getTotalPriceInCents()));
+            System.out.println("------------------------------------------------");
         }
 
-//        System.out.println("------------------------------------------------");
-//        System.out.println("\nHere is a list of your orders in price order:");
-//        OrderListIterator priceIterator = orderList.createIteratorByPrice();
-//        System.out.println("------");
-//        while (!priceIterator.isDone()) {
-//            Order order = priceIterator.getCurrentItem();
-//            System.out.print(order.getItems() + "- ");
-//            System.out.println(formatCentsToDollars(order.getTotalPriceInCents()));
-//            System.out.println("------");
-//        }
         System.out.println("------------------------------------------------");
+        System.out.println("Here is a list of your orders in price order:");
+        OrderListIterator priceIterator = orderList.createIteratorByPrice();
+        System.out.println();
+        while (!priceIterator.isDone()) {
+            Order order = priceIterator.getCurrentItem();
+            System.out.print(order.getItems());
+            System.out.println("------");
+            System.out.println("Total for order = " + formatCentsToDollars(order.getTotalPriceInCents()));
+            System.out.println("------------------------------------------------");
+        }
 
         displayGoodbyeMessage();
     }
