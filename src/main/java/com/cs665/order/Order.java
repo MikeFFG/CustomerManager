@@ -25,8 +25,8 @@ public abstract class Order {
         this.orderTime = orderTime;
     }
 
-    public List<OrderComponent> getItems() {
-        return items;
+    public OrderList getItems() {
+        return new OrderList(this);
     }
 
     public void setItems(List<OrderComponent> items) {
@@ -49,5 +49,14 @@ public abstract class Order {
             totalPriceInCents += item.getPriceInCents();
         }
         this.totalPriceInCents = totalPriceInCents;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (OrderComponent item : items) {
+            sb.append(item).append("\n");
+        }
+        return sb.toString();
     }
 }

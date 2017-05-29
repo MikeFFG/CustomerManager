@@ -1,10 +1,10 @@
 package com.cs665.bundle;
 
+import com.cs665.main.Main;
 import com.cs665.order.OrderComponent;
 import com.cs665.product.Product;
 import com.cs665.product.ProductFactory;
 
-import java.text.NumberFormat;
 import java.util.List;
 
 /**
@@ -47,28 +47,16 @@ public abstract class Bundle implements OrderComponent {
         this.factory = factory;
     }
 
-    /**
-     * Due to issues with floating point numbers, we are storing cents as ints.
-     * Need to convert to dollars for display purposes
-     * @param cents - value of cents to convert
-     * @return - String formatted in dollars
-     */
-    public String formatCentsToDollars(int cents) {
-        NumberFormat formatter = NumberFormat.getCurrencyInstance();
-        return formatter.format(cents / 100.0);
-    }
-
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("\n" + bundleName).
                 append(" - " + factory.getColor()).
-                append(" - " + formatCentsToDollars(priceInCents)).
+                append(" - " + Main.formatCentsToDollars(priceInCents)).
                 append("\nIncluded Products: \n");
         for (Product product : products) {
             builder.append(product.toString());
         }
-        builder.append("\n");
         return builder.toString();
     }
 

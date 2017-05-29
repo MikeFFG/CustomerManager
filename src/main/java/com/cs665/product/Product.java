@@ -1,5 +1,6 @@
 package com.cs665.product;
 
+import com.cs665.main.Main;
 import com.cs665.order.OrderComponent;
 import com.cs665.productProperties.ProductColor;
 import com.cs665.utils.MockIDGenerator;
@@ -48,6 +49,6 @@ public abstract class Product implements OrderComponent {
 
     @Override
     public String toString() {
-        return "\n" + name + " - " + color + " - " + "SN: " + serialNumber;
+        return "\n" + name + " - " + color + " - " + "SN: " + serialNumber + " - " + Main.formatCentsToDollars(priceInCents);
     }
 }

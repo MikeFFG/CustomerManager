@@ -132,4 +132,16 @@ public class OrderList {
             return new OrderList(newList);
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < orderList.size(); i++) {
+            sb.append(orderList.get(i));
+            if (i != orderList.size() - 1) {
+                sb.append("\n");
+            }
+        }
+        return sb.toString();
+    }
 }
