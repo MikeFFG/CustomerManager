@@ -27,10 +27,12 @@ public abstract class Product implements OrderComponent {
      * Setter ONLY for priceInCents. Name, SerialNumber, ConnectionType
      * and Color are set at manufacture time and can't be changed
      */
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public int getPriceInCents() {
         return priceInCents;
     }
@@ -43,10 +45,12 @@ public abstract class Product implements OrderComponent {
         this.priceInCents = priceInCents;
     }
 
+    @Override
     public String getSerialNumber() {
         return serialNumber;
     }
 
+    @Override
     public void setSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
     }

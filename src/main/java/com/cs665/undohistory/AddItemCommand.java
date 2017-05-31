@@ -7,13 +7,21 @@ import com.cs665.order.OrderComponent;
  * Created by mburke on 5/31/17.
  */
 public class AddItemCommand extends Command {
-    private Order postState;
-    private Order previousState;
+    private OrderComponent item;
+    private Order order;
 
     public AddItemCommand(Order order, OrderComponent item) {
+        this.item = item;
+        this.order = order;
+    }
+
+    @Override
+    public void execute() {
         order.addItem(item);
     }
 
-    public void execute() {}
-    public void undo() {}
+    @Override
+    public void undo() {
+        order.removeItem(item);
+    }
 }

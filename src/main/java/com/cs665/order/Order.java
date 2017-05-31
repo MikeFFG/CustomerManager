@@ -2,6 +2,7 @@ package com.cs665.order;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -51,6 +52,16 @@ public abstract class Order implements Cloneable {
         this.totalPriceInCents = totalPriceInCents;
     }
 
+    public void removeItem(OrderComponent component) {
+        Iterator iter = items.listIterator();
+        while(iter.hasNext()) {
+            OrderComponent item = (OrderComponent) iter.next();
+            if (item.getSerialNumber().equals(component.getSerialNumber())) {
+                iter.remove();
+            }
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -61,4 +72,5 @@ public abstract class Order implements Cloneable {
     }
 
     public abstract Order clone();
+
 }

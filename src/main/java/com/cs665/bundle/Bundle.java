@@ -19,10 +19,12 @@ public abstract class Bundle implements OrderComponent {
     protected ProductFactory factory;
     protected List<Product> products;
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public int getPriceInCents() {
         return priceInCents;
     }
@@ -48,11 +50,11 @@ public abstract class Bundle implements OrderComponent {
         return serialNumber;
     }
 
+    @Override
     public void setSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
     }
 
-    /* Only one Setter. Bundles should be immutable except for Color */
     public void setFactory(ProductFactory factory) {
         this.factory = factory;
     }

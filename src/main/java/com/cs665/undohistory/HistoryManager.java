@@ -8,6 +8,10 @@ import java.util.Stack;
 public class HistoryManager {
     private Stack<Command> history = new Stack<>();
 
+    public Stack<Command> getHistory() {
+        return history;
+    }
+
     public void execute(Command cmd) {
         cmd.execute();
         history.push(cmd);
