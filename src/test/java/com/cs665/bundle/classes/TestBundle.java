@@ -1,11 +1,12 @@
 package com.cs665.bundle.classes;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.cs665.bundle.Bundle;
+import com.cs665.order.OrderComponent;
 import com.cs665.product.Product;
 import com.cs665.productProperties.ProductColor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author michael.burke
@@ -13,7 +14,7 @@ import com.cs665.productProperties.ProductColor;
  */
 public class TestBundle extends Bundle {
     public TestBundle() {
-        this.bundleName = "Test Bundle";
+        this.name = "Test Bundle";
         this.discountPercentage = 0.25;
         this.products = createProductsList();
         this.retailValueInCents = calculateRetailValueInCents();
@@ -27,5 +28,9 @@ public class TestBundle extends Bundle {
             list.add(new TestProduct("Test Product", 100, ProductColor.BLACK));
         }
         return list;
+    }
+
+    public OrderComponent clone() {
+        return this;
     }
 }

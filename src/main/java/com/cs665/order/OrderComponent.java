@@ -5,4 +5,12 @@ package com.cs665.order;
  */
 public interface OrderComponent {
     int getPriceInCents();
+
+    String getName();
+
+    String getSerialNumber();
+
+    void setSerialNumber(String serialNumber);
+
+    OrderComponent clone();
 }

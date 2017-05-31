@@ -1,10 +1,10 @@
 package com.cs665.bundle;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.cs665.product.Product;
 import com.cs665.product.ProductFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by mburke on 5/18/17.
@@ -12,7 +12,7 @@ import com.cs665.product.ProductFactory;
 public class HomeTheaterBundle extends Bundle {
     public HomeTheaterBundle(ProductFactory factory) {
         this.factory = factory;
-        this.bundleName = "Home Theater Bundle";
+        this.name = "Home Theater Bundle";
         this.discountPercentage = 0.25;
         this.products = createProductsList();
         this.retailValueInCents = calculateRetailValueInCents();
@@ -30,4 +30,6 @@ public class HomeTheaterBundle extends Bundle {
         list.add(factory.getSurroundSpeaker());
         return list;
     }
+
+    public Bundle clone() { return this; }
 }

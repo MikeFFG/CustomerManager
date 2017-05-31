@@ -11,4 +11,8 @@ public class TestProduct extends Product {
     public TestProduct(String name, int priceInCents, ProductColor color) {
         super(name, priceInCents, color);
     }
+
+    public Product clone() {
+        return this;
+    }
 }

@@ -1,10 +1,10 @@
 package com.cs665.bundle;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.cs665.product.Product;
 import com.cs665.product.ProductFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by mburke on 5/18/17.
@@ -12,7 +12,7 @@ import com.cs665.product.ProductFactory;
 public class DigitalStreamingBundle extends Bundle {
     public DigitalStreamingBundle(ProductFactory factory) {
         this.factory = factory;
-        this.bundleName = "Digital Streaming Bundle";
+        this.name = "Digital Streaming Bundle";
         this.discountPercentage = 0.30;
         this.products = createProductsList();
         this.retailValueInCents = calculateRetailValueInCents();
@@ -26,5 +26,9 @@ public class DigitalStreamingBundle extends Bundle {
         list.add(factory.getSmallSpeaker());
         list.add(factory.getSmallSpeaker());
         return list;
+    }
+
+    public Bundle clone() {
+        return new DigitalStreamingBundle(factory);
     }
 }

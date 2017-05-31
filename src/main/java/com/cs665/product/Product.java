@@ -47,8 +47,14 @@ public abstract class Product implements OrderComponent {
         return serialNumber;
     }
 
+    public void setSerialNumber(String serialNumber) {
+        this.serialNumber = serialNumber;
+    }
+
     @Override
     public String toString() {
         return "\n" + name + " - " + color + " - " + "SN: " + serialNumber + " - " + Main.formatCentsToDollars(priceInCents);
     }
+
+    public abstract Product clone();
 }

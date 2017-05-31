@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by mburke on 5/16/17.
  */
-public abstract class Order {
+public abstract class Order implements Cloneable {
     LocalDateTime orderTime;
     List<OrderComponent> items;
     int totalPriceInCents;
@@ -25,8 +25,8 @@ public abstract class Order {
         this.orderTime = orderTime;
     }
 
-    public OrderList getItems() {
-        return new OrderList(this);
+    public List<OrderComponent> getItems() {
+        return items;
     }
 
     public void setItems(List<OrderComponent> items) {
@@ -59,4 +59,6 @@ public abstract class Order {
         }
         return sb.toString();
     }
+
+    public abstract Order clone();
 }

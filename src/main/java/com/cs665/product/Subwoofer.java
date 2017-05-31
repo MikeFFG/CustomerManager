@@ -10,4 +10,11 @@ public class Subwoofer extends Product {
     public Subwoofer(ProductColor color) {
         super("Subwoofer", 49900, color);
     }
+
+    @Override
+    public Product clone() {
+        Product newProduct = new Subwoofer(color);
+        newProduct.serialNumber = this.serialNumber;
+        return newProduct;
+    }
 }

@@ -11,15 +11,16 @@ import java.util.List;
  * Created by mburke on 5/18/17.
  */
 public abstract class Bundle implements OrderComponent {
-    protected String bundleName;
+    protected String name;
+    protected String serialNumber;
     protected int priceInCents;
     protected int retailValueInCents;
     protected double discountPercentage;
     protected ProductFactory factory;
     protected List<Product> products;
 
-    public String getBundleName() {
-        return bundleName;
+    public String getName() {
+        return name;
     }
 
     public int getPriceInCents() {
@@ -42,6 +43,15 @@ public abstract class Bundle implements OrderComponent {
         return factory;
     }
 
+    @Override
+    public String getSerialNumber() {
+        return serialNumber;
+    }
+
+    public void setSerialNumber(String serialNumber) {
+        this.serialNumber = serialNumber;
+    }
+
     /* Only one Setter. Bundles should be immutable except for Color */
     public void setFactory(ProductFactory factory) {
         this.factory = factory;
@@ -50,7 +60,7 @@ public abstract class Bundle implements OrderComponent {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("\n" + bundleName).
+        builder.append("\n" + name).
                 append(" - " + factory.getColor()).
                 append(" - " + Main.formatCentsToDollars(priceInCents)).
                 append("\nIncluded Products: \n");
@@ -87,4 +97,5 @@ public abstract class Bundle implements OrderComponent {
      */
     protected abstract List<Product> createProductsList();
 
+    public abstract OrderComponent clone();
 }

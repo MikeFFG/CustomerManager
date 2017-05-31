@@ -29,42 +29,17 @@ public class Main {
             Order order = new StandardOrder();
             boolean keepGoing = true;
             // Add Product to Order
-            while (keepGoing) {
+            while (true) {
                 System.out.println("Choose from the following items by number. " +
                         "Enter 0 to finish order.\nEnter -1 for \"Undo\" (to remove the last item you added).");
                 displayProductList();
                 int userChoice = sc.nextInt();
-                switch (userChoice) {
-                    case -1:
-                        System.out.println("Undo functionality not implemented. Enter again");
-                        break;
-                    case 0:
-                        keepGoing = false;
-                        break;
-                    case 1:
-                        order.addItem(new SmallSpeaker(ProductColor.BLACK));
-                        break;
-                    case 2:
-                        order.addItem(new SurroundSpeaker(ProductColor.BLACK));
-                        break;
-                    case 3:
-                        order.addItem(new SoundBar(ProductColor.BLACK));
-                        break;
-                    case 4:
-                        order.addItem(new Subwoofer(ProductColor.BLACK));
-                        break;
-                    case 5:
-                        order.addItem(new LargeSpeaker(ProductColor.BLACK));
-                        break;
-                    case 6:
-                        order.addItem(new DigitalStreamingBundle(new BlackProductFactory()));
-                        break;
-                    case 7:
-                        order.addItem(new HomeTheaterBundle(new BlackProductFactory()));
-                        break;
-                    default:
-                        System.out.println("Invalid choice. Try again.");
-                        break;
+                if (userChoice == 0) {
+                    break;
+                } else if (userChoice == -1) {
+                    System.out.println("Undo functionality not implemented. Enter again");
+                } else {
+                    order.addItem(parseUserChoice(userChoice));
                 }
             }
             orderList.add(order);
@@ -102,6 +77,26 @@ public class Main {
         displayGoodbyeMessage();
     }
 
+    private static OrderComponent parseUserChoice(int userChoice) {
+        switch (userChoice) {
+            case 1:
+                return new SmallSpeaker(ProductColor.BLACK);
+            case 2:
+                return new SurroundSpeaker(ProductColor.BLACK);
+            case 3:
+                return new SoundBar(ProductColor.BLACK);
+            case 4:
+                return new Subwoofer(ProductColor.BLACK);
+            case 5:
+                return new LargeSpeaker(ProductColor.BLACK);
+            case 6:
+                return new DigitalStreamingBundle(new BlackProductFactory());
+            case 7:
+                return new HomeTheaterBundle(new BlackProductFactory());
+            default:
+                throw new IllegalArgumentException("Invalid Choice.");
+        }
+    }
     private static void displayProductList() {
         System.out.println("1. Small Speaker - $199");
         System.out.println("2. Surround Speaker - $299");

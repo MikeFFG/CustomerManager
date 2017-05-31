@@ -9,4 +9,11 @@ public class LargeSpeaker extends Product {
     public LargeSpeaker(ProductColor color) {
         super("Large Speaker", 79900, color);
     }
+
+    @Override
+    public Product clone() {
+        Product newProduct = new LargeSpeaker(color);
+        newProduct.serialNumber = this.serialNumber;
+        return newProduct;
+    }
 }
