@@ -12,8 +12,8 @@ import java.util.List;
  */
 public class OrderDB {
     private List<Order> orderList = new ArrayList<>();
-    private static OrderDB orderDB = new OrderDB();
     private List<MyObserver> observers = new ArrayList<>();
+    private static OrderDB orderDB = new OrderDB();
 
     private OrderDB() {}
 
@@ -39,6 +39,10 @@ public class OrderDB {
 
     public OrderList getAll() {
         return new OrderList(orderList);
+    }
+
+    public void clear() {
+        orderDB = new OrderDB();
     }
 
     private void myNotify() {
