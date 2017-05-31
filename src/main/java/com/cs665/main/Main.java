@@ -54,29 +54,9 @@ public class Main {
             }
         }
 
-        System.out.println("------------------------------------------------");
-        System.out.println("Here is a list of your orders in default order:");
-        OrderListIterator defaultIterator = orderList.createIteratorDefault();
-        System.out.println();
-        while (!defaultIterator.isDone()) {
-            Order order = defaultIterator.getCurrentItem();
-            System.out.print(order.getItems());
-            System.out.println("------");
-            System.out.println("Total for order = " + formatCentsToDollars(order.getTotalPriceInCents()));
-            System.out.println("------------------------------------------------");
-        }
+        displayDefaultIterator(orderList);
 
-        System.out.println("------------------------------------------------");
-        System.out.println("Here is a list of your orders in price order:");
-        OrderListIterator priceIterator = orderList.createIteratorByPrice();
-        System.out.println();
-        while (!priceIterator.isDone()) {
-            Order order = priceIterator.getCurrentItem();
-            System.out.print(order.getItems());
-            System.out.println("------");
-            System.out.println("Total for order = " + formatCentsToDollars(order.getTotalPriceInCents()));
-            System.out.println("------------------------------------------------");
-        }
+        displayPriceIterator(orderList);
 
         displayGoodbyeMessage();
     }
@@ -120,6 +100,33 @@ public class Main {
         System.out.println("\nGoodbye!");
     }
 
+    private static void displayDefaultIterator(OrderList orderList) {
+        System.out.println("------------------------------------------------");
+        System.out.println("Here is a list of your orders in default order:");
+        OrderListIterator defaultIterator = orderList.createIteratorDefault();
+        System.out.println();
+        while (!defaultIterator.isDone()) {
+            Order order = defaultIterator.getCurrentItem();
+            System.out.print(order.getItems());
+            System.out.println("------");
+            System.out.println("Total for order = " + formatCentsToDollars(order.getTotalPriceInCents()));
+            System.out.println("------------------------------------------------");
+        }
+    }
+
+    private static void displayPriceIterator(OrderList orderList) {
+        System.out.println("------------------------------------------------");
+        System.out.println("Here is a list of your orders in price order:");
+        OrderListIterator priceIterator = orderList.createIteratorByPrice();
+        System.out.println();
+        while (!priceIterator.isDone()) {
+            Order order = priceIterator.getCurrentItem();
+            System.out.print(order.getItems());
+            System.out.println("------");
+            System.out.println("Total for order = " + formatCentsToDollars(order.getTotalPriceInCents()));
+            System.out.println("------------------------------------------------");
+        }
+    }
 
     private static BundleFactory getUserBundleChoice() {
         System.out.println("Choose a bundle style by typing in the associated number. Your options are:");
