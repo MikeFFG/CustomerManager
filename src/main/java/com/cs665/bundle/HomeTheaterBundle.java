@@ -2,6 +2,7 @@ package com.cs665.bundle;
 
 import com.cs665.product.Product;
 import com.cs665.product.ProductFactory;
+import com.cs665.utils.MockIDGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ public class HomeTheaterBundle extends Bundle {
         this.products = createProductsList();
         this.retailValueInCents = calculateRetailValueInCents();
         this.priceInCents = calculatePriceInCents();
+        serialNumber = MockIDGenerator.generateNewProductSerial();
     }
 
     @Override

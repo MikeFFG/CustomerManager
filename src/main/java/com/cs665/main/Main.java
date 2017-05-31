@@ -4,6 +4,9 @@ import com.cs665.bundle.*;
 import com.cs665.order.*;
 import com.cs665.product.*;
 import com.cs665.productProperties.ProductColor;
+import com.cs665.undohistory.AddItemCommand;
+import com.cs665.undohistory.Command;
+import com.cs665.undohistory.HistoryManager;
 
 import java.text.NumberFormat;
 import java.util.InputMismatchException;
@@ -15,6 +18,7 @@ import java.util.Scanner;
  */
 public class Main {
     private static Scanner sc = new Scanner(System.in);
+    private static HistoryManager history = new HistoryManager();
 
     public static void main(String[] args) {
         OrderList orderList = new OrderList();
@@ -27,7 +31,6 @@ public class Main {
         // Single Order Loop
         while (true) {
             Order order = new StandardOrder();
-            boolean keepGoing = true;
             // Add Product to Order
             while (true) {
                 System.out.println("Choose from the following items by number. " +
@@ -37,9 +40,10 @@ public class Main {
                 if (userChoice == 0) {
                     break;
                 } else if (userChoice == -1) {
-                    System.out.println("Undo functionality not implemented. Enter again");
+                    history.undo();
                 } else {
-                    order.addItem(parseUserChoice(userChoice));
+                    Command cmd = new AddItemCommand(order, parseUserChoice(userChoice));
+                    history.execute(cmd);
                 }
             }
             orderList.add(order);
