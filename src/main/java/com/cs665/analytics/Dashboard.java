@@ -6,6 +6,7 @@ import com.cs665.utils.OrderDB;
 import java.time.LocalDateTime;
 
 /**
+ * Dashboards that can be created to show analytics in various time frames.
  * Created by mburke on 5/31/17.
  */
 public class Dashboard implements MyObserver{
@@ -21,9 +22,15 @@ public class Dashboard implements MyObserver{
         this.database = OrderDB.getOrderDB();
         this.totalOrdersInDuration = calculateTotalOrdersInDuration();
         this.totalPriceInDuration = calculateTotalPriceInDuration();
+
+        // Register new dashboard with the database (the observable object)
         OrderDB.getOrderDB().addObserver(this);
     }
 
+    /**
+     * Update method that will get called by the observable object
+     */
+    @Override
     public void update() {
         this.database = OrderDB.getOrderDB();
         this.totalOrdersInDuration = calculateTotalOrdersInDuration();

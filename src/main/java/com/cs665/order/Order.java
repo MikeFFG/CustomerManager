@@ -1,6 +1,5 @@
 package com.cs665.order;
 
-import com.cs665.utils.MockIDGenerator;
 import com.cs665.utils.OrderDB;
 
 import java.time.LocalDateTime;
@@ -20,9 +19,11 @@ public abstract class Order implements Cloneable {
     public Order () {
         items = new ArrayList<>();
         orderTime = LocalDateTime.now();
-        orderID = MockIDGenerator.generateOrderID();
+        orderID = OrderDB.generateOrderID();
         OrderDB.getOrderDB().add(this);
     }
+
+    /* Getters and Setter */
 
     public String getOrderID() {
         return orderID;
@@ -49,11 +50,18 @@ public abstract class Order implements Cloneable {
         return totalPriceInCents;
     }
 
+    /**
+     * Add item to the Order. Updates the total price in cents
+     * @param item
+     */
     public void addItem(OrderComponent item) {
         items.add(item);
         calculatePriceInCents();
     }
 
+    /**
+     * Private util that updates the totalPriceInCents based on the member items
+     */
     private void calculatePriceInCents() {
         int totalPriceInCents = 0;
         for (OrderComponent item : items) {
@@ -62,6 +70,10 @@ public abstract class Order implements Cloneable {
         this.totalPriceInCents = totalPriceInCents;
     }
 
+    /**
+     * Remove an item from the order
+     * @param component
+     */
     public void removeItem(OrderComponent component) {
         Iterator iter = items.listIterator();
         while(iter.hasNext()) {
@@ -82,5 +94,4 @@ public abstract class Order implements Cloneable {
     }
 
     public abstract Order clone();
-
 }

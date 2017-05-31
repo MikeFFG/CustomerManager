@@ -1,7 +1,6 @@
 package com.cs665.bundle.classes;
 
 import com.cs665.bundle.Bundle;
-import com.cs665.order.OrderComponent;
 import com.cs665.product.Product;
 import com.cs665.productProperties.ProductColor;
 
@@ -28,9 +27,5 @@ public class TestBundle extends Bundle {
             list.add(new TestProduct("Test Product", 100, ProductColor.BLACK));
         }
         return list;
-    }
-
-    public OrderComponent clone() {
-        return this;
     }
 }

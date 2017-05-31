@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Special List wrapper for an ArrayList<Order>. To be used by Customer objects mainly to
+ * maintain their order history.
  * Created by mburke on 5/27/17.
  */
 public class OrderList {

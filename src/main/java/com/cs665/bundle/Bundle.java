@@ -92,12 +92,19 @@ public abstract class Bundle implements OrderComponent {
         return total;
     }
 
+    public Bundle clone() {
+        Bundle bundle = new DigitalStreamingBundle(factory);
+        bundle.serialNumber = serialNumber;
+        for (int i = 0; i < products.size(); i++) {
+            bundle.products.set(i, products.get(i));
+        }
+        return new DigitalStreamingBundle(factory);
+    }
+
     /**
      * Abstract method that creates the bundle. Each subclass should be aware of what
      * products are included in that particular bundle and will override this.
      * @return a List of products for the bundle
      */
     protected abstract List<Product> createProductsList();
-
-    public abstract OrderComponent clone();
 }

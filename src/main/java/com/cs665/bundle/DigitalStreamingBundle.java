@@ -29,8 +29,4 @@ public class DigitalStreamingBundle extends Bundle {
         list.add(factory.getSmallSpeaker());
         return list;
     }
-
-    public Bundle clone() {
-        return new DigitalStreamingBundle(factory);
-    }
 }
