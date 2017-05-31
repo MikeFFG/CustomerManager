@@ -17,6 +17,8 @@ public class MockIDGenerator {
     // package private
     static Set<String> productSerials = new HashSet<String>();
     static Set<String> customerIDs = new HashSet<String>();
+    static Set<String> orderIDs = new HashSet<String>();
+
 
     public static String generateNewProductSerial() {
         String serial;
@@ -24,6 +26,16 @@ public class MockIDGenerator {
         do {
             serial = RandomStringUtils.randomAlphanumeric(11);
         } while(!productSerials.add(serial));
+
+        return serial;
+    }
+
+    public static String generateOrderID() {
+        String serial;
+
+        do {
+            serial = RandomStringUtils.randomAlphanumeric(5);
+        } while(!orderIDs.add(serial));
 
         return serial;
     }

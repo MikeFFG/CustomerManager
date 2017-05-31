@@ -1,5 +1,8 @@
 package com.cs665.order;
 
+import com.cs665.utils.MockIDGenerator;
+import com.cs665.utils.OrderDB;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,11 +14,18 @@ import java.util.List;
 public abstract class Order implements Cloneable {
     LocalDateTime orderTime;
     List<OrderComponent> items;
+    String orderID;
     int totalPriceInCents;
 
     public Order () {
         items = new ArrayList<>();
         orderTime = LocalDateTime.now();
+        orderID = MockIDGenerator.generateOrderID();
+        OrderDB.getOrderDB().add(this);
+    }
+
+    public String getOrderID() {
+        return orderID;
     }
 
     public LocalDateTime getOrderTime() {
