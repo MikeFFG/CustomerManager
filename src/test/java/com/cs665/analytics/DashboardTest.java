@@ -53,7 +53,7 @@ public class DashboardTest {
     @Test
     public void test_positive_dashboardAllTime() {
         // Create forever dashboard
-        Dashboard dashboard = new Dashboard(LocalDateTime.now().minusYears(100), LocalDateTime.now());
+        Dashboard dashboard = new Dashboard(LocalDateTime.now().minusYears(100));
 
         Assert.assertEquals(6, dashboard.getTotalOrdersInDuration());
         Assert.assertEquals(60000, dashboard.getTotalPriceInDuration());
@@ -62,7 +62,7 @@ public class DashboardTest {
     @Test
     public void test_positive_dashboardMonth() {
         // Create last month dashboard
-        Dashboard dashboard = new Dashboard(LocalDateTime.now().minusMonths(1), LocalDateTime.now());
+        Dashboard dashboard = new Dashboard(LocalDateTime.now().minusMonths(1));
 
         Assert.assertEquals(3, dashboard.getTotalOrdersInDuration());
         Assert.assertEquals(30000, dashboard.getTotalPriceInDuration());

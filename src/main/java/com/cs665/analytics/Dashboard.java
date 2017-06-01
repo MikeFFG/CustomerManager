@@ -11,14 +11,12 @@ import java.time.LocalDateTime;
  */
 public class Dashboard implements MyObserver{
     private LocalDateTime startTime;
-    private LocalDateTime endTime;
     private int totalOrdersInDuration;
     private int totalPriceInDuration;
     private OrderDB database;
 
-    public Dashboard(LocalDateTime startTime, LocalDateTime endTime) {
+    public Dashboard(LocalDateTime startTime) {
         this.startTime = startTime;
-        this.endTime = endTime;
         this.database = OrderDB.getOrderDB();
         this.totalOrdersInDuration = calculateTotalOrdersInDuration();
         this.totalPriceInDuration = calculateTotalPriceInDuration();
@@ -51,8 +49,7 @@ public class Dashboard implements MyObserver{
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("My Dashboard\n")
-                .append("From:").append(startTime)
-                .append(" to ").append(endTime)
+                .append("Since:").append(startTime)
                 .append("\nThere were ").append(totalOrdersInDuration)
                 .append(" for a total of ").append(totalPriceInDuration);
         return sb.toString();
@@ -62,8 +59,7 @@ public class Dashboard implements MyObserver{
         int total = 0;
         for (int i = 0; i < database.getAll().size(); i++) {
             Order currentOrder = database.getAll().get(i);
-            if (currentOrder.getOrderTime().isBefore(endTime) &&
-                    currentOrder.getOrderTime().isAfter(startTime)) {
+            if (currentOrder.getOrderTime().isAfter(startTime)) {
                 total++;
             }
         }
@@ -74,8 +70,7 @@ public class Dashboard implements MyObserver{
         int total = 0;
         for (int i = 0; i < database.getAll().size(); i++) {
             Order currentOrder = database.getAll().get(i);
-            if (currentOrder.getOrderTime().isBefore(endTime) &&
-                    currentOrder.getOrderTime().isAfter(startTime)) {
+            if (currentOrder.getOrderTime().isAfter(startTime)) {
                 total += currentOrder.getTotalPriceInCents();
             }
         }

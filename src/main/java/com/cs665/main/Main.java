@@ -25,11 +25,11 @@ public class Main {
     private static HistoryManager history = new HistoryManager();
     private static OrderDB orderDB = OrderDB.getOrderDB();
     private static boolean analyticsMode = false;
+    private static Dashboard allTimeDashboard = new Dashboard(LocalDateTime.now().minusYears(100));
+    private static Dashboard oneMonthDashboard = new Dashboard(LocalDateTime.now().minusMonths(1));
 
     public static void main(String[] args) {
         OrderList orderList = new OrderList();
-        Dashboard allTimeDashboard = new Dashboard(LocalDateTime.now().minusYears(100), LocalDateTime.now());
-        Dashboard oneMonthDashboard = new Dashboard(LocalDateTime.now().minusMonths(1), LocalDateTime.now());
 
         initializeDummyData();
 
@@ -39,18 +39,17 @@ public class Main {
         if (sc.nextInt() == 1) { analyticsMode = true; }
 
         if (analyticsMode == true) {
-            System.out.println("All Time Dashboard:");
-            System.out.println("Total Orders: " + allTimeDashboard.getTotalOrdersInDuration());
-            System.out.println("Total Price: " + allTimeDashboard.getTotalPriceInDuration());
+            displayDashboards();
         }
 
         // Single Order Loop
         while (true) {
+            System.out.println("Choose from the following items by number. " +
+                    "Enter 0 to finish order.\nEnter -1 for \"Undo\" (to remove the last item you added).");
+            displayProductList();
             orderList.add(getUserOrderChoice());
             if (analyticsMode == true) {
-                System.out.println("All Time Dashboard:");
-                System.out.println("Total Orders: " + allTimeDashboard.getTotalOrdersInDuration());
-                System.out.println("Total Price: " + allTimeDashboard.getTotalPriceInDuration());
+                displayDashboards();
             }
             System.out.println("Would you like to add another order? 1 for yes. 2 for no");
             if (sc.nextInt() == 2) { break; }
@@ -62,6 +61,15 @@ public class Main {
         displayPriceIterator(orderList);
 
         displayGoodbyeMessage();
+    }
+
+    private static void displayDashboards() {
+        System.out.println("All Time Dashboard:");
+        System.out.println("Total Orders: " + allTimeDashboard.getTotalOrdersInDuration());
+        System.out.println("Total Price: " + formatCentsToDollars(allTimeDashboard.getTotalPriceInDuration()) + "\n");
+        System.out.println("One Month Dashboard:");
+        System.out.println("Total Orders: " + oneMonthDashboard.getTotalOrdersInDuration());
+        System.out.println("Total Price: " + formatCentsToDollars(oneMonthDashboard.getTotalPriceInDuration()) + "\n");
     }
 
     private static void initializeDummyData() {
@@ -93,9 +101,6 @@ public class Main {
         Order order = new StandardOrder();
         // Add Product to Order
         while (true) {
-            System.out.println("Choose from the following items by number. " +
-                    "Enter 0 to finish order.\nEnter -1 for \"Undo\" (to remove the last item you added).");
-            displayProductList();
             int userChoice = sc.nextInt();
             if (userChoice == 0) {
                 break;
@@ -153,12 +158,12 @@ public class Main {
         System.out.println("------------------------------------------------");
         System.out.println("Here is a list of your orders in default order:");
         OrderListIterator defaultIterator = orderList.createIteratorDefault();
-        System.out.println();
         while (!defaultIterator.isDone()) {
             Order order = defaultIterator.getCurrentItem();
-            System.out.print(order.getItems());
-            System.out.println("------");
-            System.out.println("Total for order = " + formatCentsToDollars(order.getTotalPriceInCents()));
+            for (OrderComponent item : order.getItems()) {
+                System.out.println(item);
+            }
+            System.out.println("\nTotal for order = " + formatCentsToDollars(order.getTotalPriceInCents()));
             System.out.println("------------------------------------------------");
         }
     }
@@ -167,12 +172,12 @@ public class Main {
         System.out.println("------------------------------------------------");
         System.out.println("Here is a list of your orders in price order:");
         OrderListIterator priceIterator = orderList.createIteratorByPrice();
-        System.out.println();
         while (!priceIterator.isDone()) {
             Order order = priceIterator.getCurrentItem();
-            System.out.print(order.getItems());
-            System.out.println("------");
-            System.out.println("Total for order = " + formatCentsToDollars(order.getTotalPriceInCents()));
+            for (OrderComponent item : order.getItems()) {
+                System.out.println(item);
+            }
+            System.out.println("\nTotal for order = " + formatCentsToDollars(order.getTotalPriceInCents()));
             System.out.println("------------------------------------------------");
         }
     }
