@@ -32,6 +32,13 @@ public class OrderDB {
         observers.add(observer);
     }
 
+    // Part of Observer pattern. Notify observers.
+    private void myNotify() {
+        for (MyObserver observer : observers) {
+            observer.update();
+        }
+    }
+
     public Order get(String orderID) {
         for (int i = 0; i < orderList.size(); i++) {
             if(orderList.get(i).getOrderID().equals(orderID)) {
@@ -60,10 +67,4 @@ public class OrderDB {
         return serial;
     }
 
-    // Part of Observer pattern. Notify observers.
-    private void myNotify() {
-        for (MyObserver observer : observers) {
-            observer.update();
-        }
-    }
 }

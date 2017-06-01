@@ -99,7 +99,6 @@ public class Main {
 
     private static Order getUserOrderChoice() {
         Order order = new StandardOrder();
-        // Add Product to Order
         while (true) {
             int userChoice = sc.nextInt();
             if (userChoice == 0) {
