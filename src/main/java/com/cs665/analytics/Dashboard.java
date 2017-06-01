@@ -38,10 +38,12 @@ public class Dashboard implements MyObserver{
     }
 
     public int getTotalOrdersInDuration() {
+        update();
         return totalOrdersInDuration;
     }
 
     public int getTotalPriceInDuration() {
+        update();
         return totalPriceInDuration;
     }
 

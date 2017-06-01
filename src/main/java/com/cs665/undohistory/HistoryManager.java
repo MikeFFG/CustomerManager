@@ -23,4 +23,8 @@ public class HistoryManager {
             cmd.undo();
         }
     }
+
+    public void clear() {
+        history = new Stack<>();
+    }
 }

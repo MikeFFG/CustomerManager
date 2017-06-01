@@ -1,5 +1,6 @@
 package com.cs665.main;
 
+import com.cs665.analytics.Dashboard;
 import com.cs665.bundle.*;
 import com.cs665.order.*;
 import com.cs665.product.*;
@@ -7,8 +8,11 @@ import com.cs665.productProperties.ProductColor;
 import com.cs665.undohistory.AddItemCommand;
 import com.cs665.undohistory.Command;
 import com.cs665.undohistory.HistoryManager;
+import com.cs665.utils.OrderDB;
 
 import java.text.NumberFormat;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -19,39 +23,38 @@ import java.util.Scanner;
 public class Main {
     private static Scanner sc = new Scanner(System.in);
     private static HistoryManager history = new HistoryManager();
+    private static OrderDB orderDB = OrderDB.getOrderDB();
+    private static boolean analyticsMode = false;
 
     public static void main(String[] args) {
         OrderList orderList = new OrderList();
+        Dashboard allTimeDashboard = new Dashboard(LocalDateTime.now().minusYears(100), LocalDateTime.now());
+        Dashboard oneMonthDashboard = new Dashboard(LocalDateTime.now().minusMonths(1), LocalDateTime.now());
+
+        initializeDummyData();
+
         displayWelcomeMessage();
 
-        // Looping structure to be replaced in the future.
-        // Just being used to test out and show IO functionality and Iterator
-        // Hardcoding to black for ease of functionality
+        System.out.println("Would you like to view our analytics boards as you go? 1 for yes. 2 for no");
+        if (sc.nextInt() == 1) { analyticsMode = true; }
+
+        if (analyticsMode == true) {
+            System.out.println("All Time Dashboard:");
+            System.out.println("Total Orders: " + allTimeDashboard.getTotalOrdersInDuration());
+            System.out.println("Total Price: " + allTimeDashboard.getTotalPriceInDuration());
+        }
 
         // Single Order Loop
         while (true) {
-            Order order = new StandardOrder();
-            // Add Product to Order
-            while (true) {
-                System.out.println("Choose from the following items by number. " +
-                        "Enter 0 to finish order.\nEnter -1 for \"Undo\" (to remove the last item you added).");
-                displayProductList();
-                int userChoice = sc.nextInt();
-                if (userChoice == 0) {
-                    break;
-                } else if (userChoice == -1) {
-                    history.undo();
-                } else {
-                    Command cmd = new AddItemCommand(order, parseUserChoice(userChoice));
-                    history.execute(cmd);
-                }
+            orderList.add(getUserOrderChoice());
+            if (analyticsMode == true) {
+                System.out.println("All Time Dashboard:");
+                System.out.println("Total Orders: " + allTimeDashboard.getTotalOrdersInDuration());
+                System.out.println("Total Price: " + allTimeDashboard.getTotalPriceInDuration());
             }
-            orderList.add(order);
             System.out.println("Would you like to add another order? 1 for yes. 2 for no");
-            int userChoice = sc.nextInt();
-            if (userChoice == 2) {
-                break;
-            }
+            if (sc.nextInt() == 2) { break; }
+            history.clear();
         }
 
         displayDefaultIterator(orderList);
@@ -59,6 +62,51 @@ public class Main {
         displayPriceIterator(orderList);
 
         displayGoodbyeMessage();
+    }
+
+    private static void initializeDummyData() {
+        StandardOrder order1 = new StandardOrder();
+        order1.addItem(new LargeSpeaker(ProductColor.BLACK));
+        order1.addItem(new LargeSpeaker(ProductColor.BLACK));
+        order1.addItem(new LargeSpeaker(ProductColor.BLACK));
+        order1.setOrderTime( LocalDateTime.of(1994, Month.APRIL, 15, 11, 30));
+        orderDB.getAll().add(order1);
+
+        StandardOrder order2 = new StandardOrder();
+        order2.addItem(new LargeSpeaker(ProductColor.OAK));
+        order2.setOrderTime( LocalDateTime.of(1990, Month.APRIL, 15, 11, 30));
+        orderDB.getAll().add(order2);
+
+        StandardOrder order3 = new StandardOrder();
+        order3.addItem(new LargeSpeaker(ProductColor.WHITE));
+        order3.addItem(new SurroundSpeaker(ProductColor.WHITE));
+        order3.setOrderTime( LocalDateTime.of(2000, Month.APRIL, 15, 11, 30));
+        orderDB.getAll().add(order3);
+
+        StandardOrder order4 = new StandardOrder();
+        order4.addItem(new SmallSpeaker(ProductColor.BLACK));
+        order4.setOrderTime( LocalDateTime.of(1989, Month.APRIL, 15, 11, 30));
+        orderDB.getAll().add(order4);
+    }
+
+    private static Order getUserOrderChoice() {
+        Order order = new StandardOrder();
+        // Add Product to Order
+        while (true) {
+            System.out.println("Choose from the following items by number. " +
+                    "Enter 0 to finish order.\nEnter -1 for \"Undo\" (to remove the last item you added).");
+            displayProductList();
+            int userChoice = sc.nextInt();
+            if (userChoice == 0) {
+                break;
+            } else if (userChoice == -1) {
+                history.undo();
+            } else {
+                Command cmd = new AddItemCommand(order, parseUserChoice(userChoice));
+                history.execute(cmd);
+            }
+        }
+        return order;
     }
 
     private static OrderComponent parseUserChoice(int userChoice) {
@@ -81,6 +129,7 @@ public class Main {
                 throw new IllegalArgumentException("Invalid Choice.");
         }
     }
+
     private static void displayProductList() {
         System.out.println("1. Small Speaker - $199");
         System.out.println("2. Surround Speaker - $299");
