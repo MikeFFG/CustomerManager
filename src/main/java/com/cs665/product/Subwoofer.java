@@ -15,7 +15,7 @@ public class Subwoofer extends Product {
     @Override
     public Product clone() {
         Product newProduct = new Subwoofer(color);
-        newProduct.serialNumber = this.serialNumber;
+        newProduct.setSerialNumber(this.serialNumber);
         return newProduct;
     }
 }

@@ -1,6 +1,4 @@
-package com.cs665.order;
-
-import com.cs665.Framework.order.Order;
+package com.cs665.Framework.order;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

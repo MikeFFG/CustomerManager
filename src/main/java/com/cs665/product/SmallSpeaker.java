@@ -14,7 +14,7 @@ public class SmallSpeaker extends Product {
     @Override
     public Product clone() {
         Product newProduct = new SmallSpeaker(color);
-        newProduct.serialNumber = this.serialNumber;
+        newProduct.setSerialNumber(this.serialNumber);
         return newProduct;
     }
 }

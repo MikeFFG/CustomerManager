@@ -1,6 +1,5 @@
 package com.cs665.bundle;
 
-import com.cs665.Framework.bundle.Bundle;
 import com.cs665.product.ProductFactory;
 
 /**
@@ -8,7 +7,7 @@ import com.cs665.product.ProductFactory;
  */
 public class HomeTheaterBundleFactory implements BundleFactory {
     @Override
-    public Bundle createBundle(ProductFactory factory) {
+    public CustomerManagerBundle createBundle(ProductFactory factory) {
         return new HomeTheaterBundle(factory);
     }
 }

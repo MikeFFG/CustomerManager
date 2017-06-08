@@ -2,17 +2,19 @@ package com.cs665.main;
 
 import com.cs665.Framework.order.Order;
 import com.cs665.Framework.order.OrderComponent;
+import com.cs665.Framework.utils.MoneyUtils;
 import com.cs665.analytics.Dashboard;
 import com.cs665.bundle.*;
-import com.cs665.order.*;
+import com.cs665.Framework.order.OrderList;
+import com.cs665.Framework.order.OrderListIterator;
+import com.cs665.order.StandardOrder;
 import com.cs665.product.*;
 import com.cs665.productProperties.ProductColor;
 import com.cs665.undohistory.AddItemCommand;
-import com.cs665.undohistory.Command;
+import com.cs665.Framework.commands.Command;
 import com.cs665.undohistory.HistoryManager;
 import com.cs665.utils.OrderDB;
 
-import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.InputMismatchException;
@@ -68,10 +70,10 @@ public class Main {
     private static void displayDashboards() {
         System.out.println("All Time Dashboard:");
         System.out.println("Total Orders: " + allTimeDashboard.getTotalOrdersInDuration());
-        System.out.println("Total Price: " + formatCentsToDollars(allTimeDashboard.getTotalPriceInDuration()) + "\n");
+        System.out.println("Total Price: " + MoneyUtils.formatCentsToDollars(allTimeDashboard.getTotalPriceInDuration()) + "\n");
         System.out.println("One Month Dashboard:");
         System.out.println("Total Orders: " + oneMonthDashboard.getTotalOrdersInDuration());
-        System.out.println("Total Price: " + formatCentsToDollars(oneMonthDashboard.getTotalPriceInDuration()) + "\n");
+        System.out.println("Total Price: " + MoneyUtils.formatCentsToDollars(oneMonthDashboard.getTotalPriceInDuration()) + "\n");
     }
 
     private static void initializeDummyData() {
@@ -164,7 +166,7 @@ public class Main {
             for (OrderComponent item : order.getItems()) {
                 System.out.println(item);
             }
-            System.out.println("\nTotal for order = " + formatCentsToDollars(order.getTotalPriceInCents()));
+            System.out.println("\nTotal for order = " + MoneyUtils.formatCentsToDollars(order.getTotalPriceInCents()));
             System.out.println("------------------------------------------------");
         }
     }
@@ -178,7 +180,7 @@ public class Main {
             for (OrderComponent item : order.getItems()) {
                 System.out.println(item);
             }
-            System.out.println("\nTotal for order = " + formatCentsToDollars(order.getTotalPriceInCents()));
+            System.out.println("\nTotal for order = " + MoneyUtils.formatCentsToDollars(order.getTotalPriceInCents()));
             System.out.println("------------------------------------------------");
         }
     }
@@ -227,16 +229,5 @@ public class Main {
             default:
                 throw new IllegalArgumentException("Invalid Choice");
         }
-    }
-
-    /**
-     * Due to issues with floating point numbers, we are storing cents as ints.
-     * Need to convert to dollars for display purposes
-     * @param cents - value of cents to convert
-     * @return - String formatted in dollars
-     */
-    public static String formatCentsToDollars(int cents) {
-        NumberFormat formatter = NumberFormat.getCurrencyInstance();
-        return formatter.format(cents / 100.0);
     }
 }

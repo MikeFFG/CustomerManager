@@ -11,10 +11,10 @@ import java.util.List;
  * Created by mburke on 5/16/17.
  */
 public abstract class Order implements Cloneable {
-    LocalDateTime orderTime;
-    List<OrderComponent> items;
-    String orderID;
-    int totalPriceInCents;
+    protected LocalDateTime orderTime;
+    protected List<OrderComponent> items;
+    protected String orderID;
+    protected int totalPriceInCents;
 
     public Order () {
         items = new ArrayList<>();

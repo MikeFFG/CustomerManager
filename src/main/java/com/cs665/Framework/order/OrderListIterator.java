@@ -1,6 +1,4 @@
-package com.cs665.order;
-
-import com.cs665.Framework.order.Order;
+package com.cs665.Framework.order;
 
 /**
  * Created by mburke on 5/27/17.

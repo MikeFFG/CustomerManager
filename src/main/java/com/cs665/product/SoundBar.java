@@ -14,7 +14,7 @@ public class SoundBar extends Product {
     @Override
     public Product clone() {
         Product newProduct = new SoundBar(color);
-        newProduct.serialNumber = this.serialNumber;
+        newProduct.setSerialNumber(this.serialNumber);
         return newProduct;
     }
 }

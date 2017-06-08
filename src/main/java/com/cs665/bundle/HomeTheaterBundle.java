@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by mburke on 5/18/17.
  */
-public class HomeTheaterBundle extends Bundle {
+public class HomeTheaterBundle extends CustomerManagerBundle {
     public HomeTheaterBundle(ProductFactory factory) {
         this.factory = factory;
         this.name = "Home Theater Bundle";

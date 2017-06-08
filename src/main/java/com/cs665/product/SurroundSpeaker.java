@@ -14,7 +14,7 @@ public class SurroundSpeaker extends Product {
     @Override
     public Product clone() {
         Product newProduct = new SurroundSpeaker(color);
-        newProduct.serialNumber = this.serialNumber;
+        newProduct.setSerialNumber(this.serialNumber);
         return newProduct;
     }
 }

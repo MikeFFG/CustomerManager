@@ -1,6 +1,5 @@
 package com.cs665.bundle;
 
-import com.cs665.Framework.bundle.Bundle;
 import com.cs665.Framework.product.Product;
 import com.cs665.product.ProductFactory;
 import com.cs665.utils.MockIDGenerator;
@@ -11,7 +10,7 @@ import java.util.List;
 /**
  * Created by mburke on 5/18/17.
  */
-public class DigitalStreamingBundle extends Bundle {
+public class DigitalStreamingBundle extends CustomerManagerBundle {
     public DigitalStreamingBundle(ProductFactory factory) {
         this.factory = factory;
         this.name = "Digital Streaming Bundle";

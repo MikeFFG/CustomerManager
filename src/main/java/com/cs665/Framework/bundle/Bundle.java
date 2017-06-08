@@ -1,9 +1,9 @@
 package com.cs665.Framework.bundle;
 
-import com.cs665.bundle.DigitalStreamingBundle;
-import com.cs665.main.Main;
 import com.cs665.Framework.order.OrderComponent;
 import com.cs665.Framework.product.Product;
+import com.cs665.Framework.utils.MoneyUtils;
+import com.cs665.bundle.DigitalStreamingBundle;
 import com.cs665.product.ProductFactory;
 
 import java.util.List;
@@ -65,7 +65,7 @@ public abstract class Bundle implements OrderComponent {
         StringBuilder builder = new StringBuilder();
         builder.append("\n" + name).
                 append(" - " + factory.getColor()).
-                append(" - " + Main.formatCentsToDollars(priceInCents)).
+                append(" - " + MoneyUtils.formatCentsToDollars(priceInCents)).
                 append("\nIncluded Products: \n");
         for (Product product : products) {
             builder.append(product.toString());

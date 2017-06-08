@@ -1,8 +1,6 @@
-package com.cs665.bundle;
+package com.cs665.Framework.bundle;
 
-import com.cs665.Framework.bundle.Bundle;
 import com.cs665.bundle.classes.TestBundle;
-
 import org.junit.Assert;
 import org.junit.Test;
 
