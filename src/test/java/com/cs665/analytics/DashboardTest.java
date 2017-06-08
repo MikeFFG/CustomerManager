@@ -1,7 +1,7 @@
 package com.cs665.analytics;
 
 import com.cs665.bundle.classes.TestProduct;
-import com.cs665.order.Order;
+import com.cs665.Framework.order.Order;
 import com.cs665.order.StandardOrder;
 import com.cs665.productProperties.ProductColor;
 import com.cs665.utils.OrderDB;

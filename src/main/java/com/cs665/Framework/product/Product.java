@@ -1,7 +1,7 @@
-package com.cs665.product;
+package com.cs665.Framework.product;
 
 import com.cs665.main.Main;
-import com.cs665.order.OrderComponent;
+import com.cs665.Framework.order.OrderComponent;
 import com.cs665.productProperties.ProductColor;
 import com.cs665.utils.MockIDGenerator;
 

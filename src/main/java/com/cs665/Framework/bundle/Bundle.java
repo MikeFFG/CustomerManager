@@ -1,8 +1,9 @@
-package com.cs665.bundle;
+package com.cs665.Framework.bundle;
 
+import com.cs665.bundle.DigitalStreamingBundle;
 import com.cs665.main.Main;
-import com.cs665.order.OrderComponent;
-import com.cs665.product.Product;
+import com.cs665.Framework.order.OrderComponent;
+import com.cs665.Framework.product.Product;
 import com.cs665.product.ProductFactory;
 
 import java.util.List;

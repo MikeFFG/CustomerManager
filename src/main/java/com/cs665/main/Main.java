@@ -1,5 +1,7 @@
 package com.cs665.main;
 
+import com.cs665.Framework.order.Order;
+import com.cs665.Framework.order.OrderComponent;
 import com.cs665.analytics.Dashboard;
 import com.cs665.bundle.*;
 import com.cs665.order.*;

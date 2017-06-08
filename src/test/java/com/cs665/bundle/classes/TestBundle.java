@@ -1,7 +1,7 @@
 package com.cs665.bundle.classes;
 
-import com.cs665.bundle.Bundle;
-import com.cs665.product.Product;
+import com.cs665.Framework.bundle.Bundle;
+import com.cs665.Framework.product.Product;
 import com.cs665.productProperties.ProductColor;
 
 import java.util.ArrayList;

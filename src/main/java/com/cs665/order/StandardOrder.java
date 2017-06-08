@@ -1,5 +1,8 @@
 package com.cs665.order;
 
+import com.cs665.Framework.order.Order;
+import com.cs665.Framework.order.OrderComponent;
+
 import java.time.LocalDateTime;
 
 /**

@@ -1,5 +1,6 @@
 package com.cs665.bundle;
 
+import com.cs665.Framework.bundle.Bundle;
 import com.cs665.product.ProductFactory;
 
 /**

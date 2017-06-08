@@ -1,4 +1,4 @@
-package com.cs665.customer;
+package com.cs665.Framework.customer;
 
 /**
  * @author michael.burke
