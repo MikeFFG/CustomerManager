@@ -3,7 +3,7 @@ package com.cs665.bundle;
 import com.cs665.Framework.bundle.Bundle;
 import com.cs665.Framework.product.Product;
 import com.cs665.product.ProductFactory;
-import com.cs665.utils.MockIDGenerator;
+import com.cs665.mockDB.MockIDGenerator;
 
 import java.util.ArrayList;
 import java.util.List;

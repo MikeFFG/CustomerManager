@@ -4,7 +4,7 @@ import com.cs665.Framework.order.Order;
 import com.cs665.product.LargeSpeaker;
 import com.cs665.product.SmallSpeaker;
 import com.cs665.productProperties.ProductColor;
-import com.cs665.utils.MockIDGenerator;
+import com.cs665.mockDB.MockIDGenerator;
 import org.junit.Assert;
 import org.junit.Test;
 

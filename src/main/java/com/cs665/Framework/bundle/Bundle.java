@@ -3,7 +3,6 @@ package com.cs665.Framework.bundle;
 import com.cs665.Framework.order.OrderComponent;
 import com.cs665.Framework.product.Product;
 import com.cs665.Framework.utils.MoneyUtils;
-import com.cs665.bundle.DigitalStreamingBundle;
 import com.cs665.product.ProductFactory;
 
 import java.util.List;
@@ -46,6 +45,10 @@ public abstract class Bundle implements OrderComponent {
         return factory;
     }
 
+    public void setFactory(ProductFactory factory) {
+        this.factory = factory;
+    }
+
     @Override
     public String getSerialNumber() {
         return serialNumber;
@@ -54,10 +57,6 @@ public abstract class Bundle implements OrderComponent {
     @Override
     public void setSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
-    }
-
-    public void setFactory(ProductFactory factory) {
-        this.factory = factory;
     }
 
     @Override
@@ -93,14 +92,11 @@ public abstract class Bundle implements OrderComponent {
         return total;
     }
 
-    public Bundle clone() {
-        Bundle bundle = new DigitalStreamingBundle(factory);
-        bundle.serialNumber = serialNumber;
-        for (int i = 0; i < products.size(); i++) {
-            bundle.products.set(i, products.get(i));
-        }
-        return new DigitalStreamingBundle(factory);
-    }
+    /**
+     * Users must implement a deep clone
+     * @return
+     */
+    public abstract Bundle clone();
 
     /**
      * Abstract method that creates the bundle. Each subclass should be aware of what
