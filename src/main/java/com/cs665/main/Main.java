@@ -3,7 +3,7 @@ package com.cs665.main;
 import com.cs665.Framework.order.Order;
 import com.cs665.Framework.order.OrderComponent;
 import com.cs665.Framework.utils.MoneyUtils;
-import com.cs665.analytics.Dashboard;
+import com.cs665.analytics.OrderDashboard;
 import com.cs665.bundle.*;
 import com.cs665.Framework.order.OrderList;
 import com.cs665.Framework.order.OrderListIterator;
@@ -29,8 +29,8 @@ public class Main {
     private static HistoryManager history = new HistoryManager();
     private static OrderDB orderDB = OrderDB.getOrderDB();
     private static boolean analyticsMode = false;
-    private static Dashboard allTimeDashboard = new Dashboard(LocalDateTime.now().minusYears(100));
-    private static Dashboard oneMonthDashboard = new Dashboard(LocalDateTime.now().minusMonths(1));
+    private static OrderDashboard allTimeDashboard = new OrderDashboard(LocalDateTime.now().minusYears(100));
+    private static OrderDashboard oneMonthDashboard = new OrderDashboard(LocalDateTime.now().minusMonths(1));
 
     public static void main(String[] args) {
         OrderList orderList = new OrderList();
@@ -68,10 +68,10 @@ public class Main {
     }
 
     private static void displayDashboards() {
-        System.out.println("All Time Dashboard:");
+        System.out.println("All Time OrderDashboard:");
         System.out.println("Total Orders: " + allTimeDashboard.getTotalOrdersInDuration());
         System.out.println("Total Price: " + MoneyUtils.formatCentsToDollars(allTimeDashboard.getTotalPriceInDuration()) + "\n");
-        System.out.println("One Month Dashboard:");
+        System.out.println("One Month OrderDashboard:");
         System.out.println("Total Orders: " + oneMonthDashboard.getTotalOrdersInDuration());
         System.out.println("Total Price: " + MoneyUtils.formatCentsToDollars(oneMonthDashboard.getTotalPriceInDuration()) + "\n");
     }

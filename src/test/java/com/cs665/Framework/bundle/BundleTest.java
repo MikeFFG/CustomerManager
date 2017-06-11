@@ -1,6 +1,7 @@
 package com.cs665.Framework.bundle;
 
 import com.cs665.bundle.classes.TestBundle;
+import com.cs665.product.BlackProductFactory;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,13 +12,13 @@ import org.junit.Test;
 public class BundleTest {
     @Test
     public void test_positive_calculateRetailValueInCents() {
-        Bundle bundle = new TestBundle();
+        Bundle bundle = new TestBundle(new BlackProductFactory());
         Assert.assertEquals(10000, bundle.calculateRetailValueInCents());
     }
 
     @Test
     public void test_positive_calculatePriceInCents() {
-        Bundle bundle = new TestBundle();
+        Bundle bundle = new TestBundle(new BlackProductFactory());
         Assert.assertEquals(7500, bundle.calculatePriceInCents());
     }
 }

@@ -1,6 +1,6 @@
 package com.cs665.mockDB;
 
-import com.cs665.analytics.MyObserver;
+import com.cs665.Framework.dashboards.Observer;
 import com.cs665.Framework.order.Order;
 import com.cs665.Framework.order.OrderList;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -12,9 +12,9 @@ import java.util.List;
  * Mock database to hold Orders
  * Created by mburke on 5/31/17.
  */
-public class OrderDB {
+public class OrderDB extends Database {
     private List<Order> orderList = new ArrayList<>();
-    private List<MyObserver> observers = new ArrayList<>();
+    private List<Observer> observers = new ArrayList<>();
     private static OrderDB orderDB = new OrderDB();
 
     // Singleton because we only want one DB per run
@@ -28,13 +28,14 @@ public class OrderDB {
     }
 
     // Part of the Observer pattern. Register an observer
-    public void addObserver(MyObserver observer) {
-        observers.add(observer);
+    @Override
+    public boolean addObserver(Observer observer) {
+        return observers.add(observer);
     }
 
     // Part of Observer pattern. Notify observers.
     private void myNotify() {
-        for (MyObserver observer : observers) {
+        for (Observer observer : observers) {
             observer.update();
         }
     }

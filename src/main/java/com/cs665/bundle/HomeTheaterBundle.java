@@ -34,5 +34,13 @@ public class HomeTheaterBundle extends CustomerManagerBundle {
         return list;
     }
 
-    public Bundle clone() { return this; }
+    @Override
+    public Bundle clone() {
+        Bundle bundle = new HomeTheaterBundle(factory);
+        bundle.getSerialNumber();
+        for (int i = 0; i < products.size(); i++) {
+            bundle.getProducts().set(i, products.get(i));
+        }
+        return new HomeTheaterBundle(factory);
+    }
 }
