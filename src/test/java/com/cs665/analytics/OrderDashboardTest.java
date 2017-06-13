@@ -1,10 +1,10 @@
 package com.cs665.analytics;
 
 import com.cs665.bundle.classes.TestProduct;
-import com.cs665.order.Order;
+import com.cs665.Framework.order.Order;
 import com.cs665.order.StandardOrder;
 import com.cs665.productProperties.ProductColor;
-import com.cs665.utils.OrderDB;
+import com.cs665.mockDB.OrderDB;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 /**
  * Created by mburke on 5/31/17.
  */
-public class DashboardTest {
+public class OrderDashboardTest {
     @Before
     public void setUp() {
         // Create new orders in the month
@@ -53,7 +53,7 @@ public class DashboardTest {
     @Test
     public void test_positive_dashboardAllTime() {
         // Create forever dashboard
-        Dashboard dashboard = new Dashboard(LocalDateTime.now().minusYears(100));
+        OrderDashboard dashboard = new OrderDashboard(LocalDateTime.now().minusYears(100));
 
         Assert.assertEquals(6, dashboard.getTotalOrdersInDuration());
         Assert.assertEquals(60000, dashboard.getTotalPriceInDuration());
@@ -62,7 +62,7 @@ public class DashboardTest {
     @Test
     public void test_positive_dashboardMonth() {
         // Create last month dashboard
-        Dashboard dashboard = new Dashboard(LocalDateTime.now().minusMonths(1));
+        OrderDashboard dashboard = new OrderDashboard(LocalDateTime.now().minusMonths(1));
 
         Assert.assertEquals(3, dashboard.getTotalOrdersInDuration());
         Assert.assertEquals(30000, dashboard.getTotalPriceInDuration());

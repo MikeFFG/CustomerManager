@@ -1,4 +1,4 @@
-package com.cs665.utils;
+package com.cs665.mockDB;
 
 /**
  * Created by mburke on 5/31/17.

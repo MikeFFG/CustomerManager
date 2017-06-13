@@ -1,4 +1,4 @@
-package com.cs665.utils;
+package com.cs665.mockDB;
 
 import org.apache.commons.lang3.RandomStringUtils;
 

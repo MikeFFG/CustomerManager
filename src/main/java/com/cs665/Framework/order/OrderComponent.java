@@ -1,4 +1,4 @@
-package com.cs665.order;
+package com.cs665.Framework.order;
 
 /**
  * Interface that needs to be implemented by any item

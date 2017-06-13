@@ -1,4 +1,4 @@
-package com.cs665.utils;
+package com.cs665.mockDB;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.util.HashSet;
 
-import static com.cs665.utils.MockIDGenerator.*;
+import static com.cs665.mockDB.MockIDGenerator.*;
 
 /**
  * @author michael.burke

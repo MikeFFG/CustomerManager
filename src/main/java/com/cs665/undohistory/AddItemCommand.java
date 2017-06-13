@@ -1,7 +1,8 @@
 package com.cs665.undohistory;
 
-import com.cs665.order.Order;
-import com.cs665.order.OrderComponent;
+import com.cs665.Framework.commands.Command;
+import com.cs665.Framework.order.Order;
+import com.cs665.Framework.order.OrderComponent;
 
 /**
  * Created by mburke on 5/31/17.

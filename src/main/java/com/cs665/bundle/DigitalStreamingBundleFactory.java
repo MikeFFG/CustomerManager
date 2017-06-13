@@ -7,7 +7,7 @@ import com.cs665.product.ProductFactory;
  */
 public class DigitalStreamingBundleFactory implements BundleFactory {
     @Override
-    public Bundle createBundle(ProductFactory factory) {
+    public CustomerManagerBundle createBundle(ProductFactory factory) {
         return new DigitalStreamingBundle(factory);
     }
 }

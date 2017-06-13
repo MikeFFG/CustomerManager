@@ -1,8 +1,9 @@
 package com.cs665.bundle;
 
-import com.cs665.product.Product;
+import com.cs665.Framework.bundle.Bundle;
+import com.cs665.Framework.product.Product;
+import com.cs665.mockDB.MockIDGenerator;
 import com.cs665.product.ProductFactory;
-import com.cs665.utils.MockIDGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 /**
  * Created by mburke on 5/18/17.
  */
-public class DigitalStreamingBundle extends Bundle {
+public class DigitalStreamingBundle extends CustomerManagerBundle {
     public DigitalStreamingBundle(ProductFactory factory) {
         this.factory = factory;
         this.name = "Digital Streaming Bundle";
@@ -28,5 +29,15 @@ public class DigitalStreamingBundle extends Bundle {
         list.add(factory.getSmallSpeaker());
         list.add(factory.getSmallSpeaker());
         return list;
+    }
+
+    @Override
+    public Bundle clone() {
+        Bundle bundle = new DigitalStreamingBundle(factory);
+        bundle.getSerialNumber();
+        for (int i = 0; i < products.size(); i++) {
+            bundle.getProducts().set(i, products.get(i));
+        }
+        return new DigitalStreamingBundle(factory);
     }
 }

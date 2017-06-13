@@ -1,5 +1,6 @@
 package com.cs665.product;
 
+import com.cs665.Framework.product.Product;
 import com.cs665.productProperties.ProductColor;
 
 /**
@@ -13,7 +14,7 @@ public class SurroundSpeaker extends Product {
     @Override
     public Product clone() {
         Product newProduct = new SurroundSpeaker(color);
-        newProduct.serialNumber = this.serialNumber;
+        newProduct.setSerialNumber(this.serialNumber);
         return newProduct;
     }
 }

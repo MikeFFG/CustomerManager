@@ -1,7 +1,7 @@
 package com.cs665.undohistory;
 
-import com.cs665.order.Order;
-import com.cs665.order.OrderComponent;
+import com.cs665.Framework.order.Order;
+import com.cs665.Framework.order.OrderComponent;
 import com.cs665.order.StandardOrder;
 import com.cs665.product.LargeSpeaker;
 import com.cs665.product.SmallSpeaker;

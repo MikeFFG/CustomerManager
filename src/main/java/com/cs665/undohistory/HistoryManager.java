@@ -1,5 +1,7 @@
 package com.cs665.undohistory;
 
+import com.cs665.Framework.commands.Command;
+
 import java.util.Stack;
 
 /**

@@ -1,9 +1,9 @@
-package com.cs665.product;
+package com.cs665.Framework.product;
 
-import com.cs665.main.Main;
-import com.cs665.order.OrderComponent;
+import com.cs665.Framework.order.OrderComponent;
+import com.cs665.Framework.utils.MoneyUtils;
 import com.cs665.productProperties.ProductColor;
-import com.cs665.utils.MockIDGenerator;
+import com.cs665.mockDB.MockIDGenerator;
 
 /**
  * @author michael.burke
@@ -22,11 +22,7 @@ public abstract class Product implements OrderComponent {
         serialNumber = MockIDGenerator.generateNewProductSerial();
     }
 
-    /*
-     * Getters and Setters
-     * Setter ONLY for priceInCents. Name, SerialNumber, ConnectionType
-     * and Color are set at manufacture time and can't be changed
-     */
+    // Getters and Setters
     @Override
     public String getName() {
         return name;
@@ -57,8 +53,10 @@ public abstract class Product implements OrderComponent {
 
     @Override
     public String toString() {
-        return "\n" + name + " - " + color + " - " + "SN: " + serialNumber + " - " + Main.formatCentsToDollars(priceInCents);
+        return "\n" + name + " - " + color + " - " + "SN: " + serialNumber + " - " + MoneyUtils.formatCentsToDollars(priceInCents);
     }
+
+    // Abstract methods
 
     public abstract Product clone();
 }
