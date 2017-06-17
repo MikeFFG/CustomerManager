@@ -16,14 +16,14 @@ public abstract class Order implements Cloneable {
     protected String orderID;
     protected int totalPriceInCents;
 
-    public Order () {
+    public Order() {
         items = new ArrayList<>();
         orderTime = LocalDateTime.now();
         orderID = OrderDB.generateOrderID();
         OrderDB.getOrderDB().add(this);
     }
 
-    /* Getters and Setter */
+    /* Getters and Setters */
 
     public String getOrderID() {
         return orderID;

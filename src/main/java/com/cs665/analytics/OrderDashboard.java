@@ -24,7 +24,7 @@ public class OrderDashboard extends Dashboard implements OrderObserver {
         this.totalPriceInDuration = calculateTotalPriceInDuration();
 
         // Register new dashboard with the database (the observable object)
-        if (!register(OrderDB.getOrderDB())) {
+        if (!register(database)) {
             throw new IllegalStateException("Error connecting to database");
         }
     }

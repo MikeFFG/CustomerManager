@@ -24,7 +24,7 @@ public class DigitalStreamingBundle extends CustomerManagerBundle {
 
     @Override
     protected List<Product> createProductsList() {
-        List<Product> list = new ArrayList<Product>();
+        List<Product> list = new ArrayList<>();
         list.add(factory.getSmallSpeaker());
         list.add(factory.getSmallSpeaker());
         list.add(factory.getSmallSpeaker());

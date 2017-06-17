@@ -53,6 +53,10 @@ public class OrderDB extends Database {
         return new OrderList(orderList);
     }
 
+    public int size() {
+        return orderList.size();
+    }
+
     // "Delete" DB. Mostly used for testing
     public void clear() {
         orderDB = new OrderDB();
